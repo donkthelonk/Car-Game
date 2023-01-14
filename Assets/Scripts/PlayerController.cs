@@ -23,25 +23,29 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Keep the player in bounds
-        // replaced the x bounds with physical walls
-        //if (transform.position.x < -xRange)
-        //    transform.position = new Vector3(-xRange, transform.position.y, transform.position.z);
+        // Get input from user and move player
+        MovePlayer();
 
-        //if (transform.position.x > xRange)
-        //    transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
+        // Constrain movement on the z axis
+        ConstrainPlayerPosition();
+    }
 
+    // Moves player based on user input
+    void MovePlayer()
+    {
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
+        playerRb.AddForce(Vector3.forward * speed * verticalInput);
+        playerRb.AddForce(Vector3.right * speed * horizontalInput);
+    }
+
+    // Constrains player movement 
+    void ConstrainPlayerPosition()
+    {
         if (transform.position.z > zMax)
             transform.position = new Vector3(transform.position.x, transform.position.y, zMax);
 
         if (transform.position.z < zMin)
             transform.position = new Vector3(transform.position.x, transform.position.y, zMin);
-
-        // Get input from user move player
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
-        playerRb.AddForce(Vector3.forward * speed * verticalInput);
-        playerRb.AddForce(Vector3.right * speed * horizontalInput);
-
     }
 }
