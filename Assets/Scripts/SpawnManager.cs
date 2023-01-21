@@ -6,16 +6,20 @@ public class SpawnManager : MonoBehaviour
 {
     public GameObject[] traffic;
     public GameObject powerup;
+    public GameObject crate;
 
     private float zTrafficSpawn = 15.0f;
     private float zPowerupSpawn = 15.0f;
+    private float zCrateSpawn = 15.0f;
     private float xSpawnRange = 10.0f;
     //private float zPowerupRange = 5.0f;   // only used if powerup spawns in the road
     private float yTrafficSpawn = 0.5f;
     private float yPowerupSpawn = 0.25f;
+    private float yCrateSpawn = 0.25f;
 
-    private float powerupSpawnTime = 5.0f;
     private float trafficSpawnTime = 1.0f;
+    private float powerupSpawnTime = 5.0f;
+    private float crateSpawnTime = 10.0f;
     private float startDelay = 1.0f;
 
     // Start is called before the first frame update
@@ -26,6 +30,10 @@ public class SpawnManager : MonoBehaviour
 
         // Continuously spawn powerups at powerupSpawnTime intervals
         InvokeRepeating("SpawnPowerup", startDelay, powerupSpawnTime);
+
+        // Continuously spawn powerups at crateSpawnTime intervals
+        InvokeRepeating("SpawnCrate", startDelay, crateSpawnTime);
+
     }
 
     // Update is called once per frame
@@ -61,5 +69,18 @@ public class SpawnManager : MonoBehaviour
 
         // Spawn powerup at top of screen
         Instantiate(powerup, spawnPos, powerup.transform.rotation);
+    }
+
+    // Spawn crate at top of screen
+    void SpawnCrate()
+    {
+        // Create random spawnPos x value
+        float randomX = Random.Range(-xSpawnRange, xSpawnRange);
+
+        // Create vector3 for spawnPos
+        Vector3 spawnPos = new Vector3(randomX, yCrateSpawn, zCrateSpawn);
+
+        // Spawn crate at top of screen
+        Instantiate(crate, spawnPos, powerup.transform.rotation);
     }
 }
