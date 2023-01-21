@@ -16,7 +16,7 @@ public class MoveDown : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // Move object down the screen
         objectRb.AddForce(Vector3.forward * -speed);
