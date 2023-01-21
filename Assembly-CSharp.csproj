@@ -62,6 +62,7 @@
     <Compile Include="Assets\Scripts\Car.cs" />
     <Compile Include="Assets\Scripts\MoveDown.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\SpawnManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
