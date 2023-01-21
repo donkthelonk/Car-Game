@@ -57,6 +57,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Bus.cs" />
+    <Compile Include="Assets\Scripts\Car.cs" />
+    <Compile Include="Assets\Scripts\Powerup.cs" />
+    <Compile Include="Assets\Scripts\Crate.cs" />
+    <Compile Include="Assets\Scripts\MoveDown.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
