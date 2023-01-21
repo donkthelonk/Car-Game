@@ -493,6 +493,8 @@ GameObject:
   - component: {fileID: 457941081}
   - component: {fileID: 457941080}
   - component: {fileID: 457941084}
+  - component: {fileID: 457941086}
+  - component: {fileID: 457941085}
   m_Layer: 0
   m_Name: Crate
   m_TagString: Untagged
@@ -592,8 +594,33 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 4
+  m_Constraints: 20
   m_CollisionDetection: 0
+--- !u!114 &457941085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457941079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc18e7cfb49b340428cdf2714d64721b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 50
+--- !u!114 &457941086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457941079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9732c1fa7c039a42bb10def681f89de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &530488856
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,8 +633,9 @@ GameObject:
   - component: {fileID: 530488859}
   - component: {fileID: 530488858}
   - component: {fileID: 530488857}
-  - component: {fileID: 530488862}
   - component: {fileID: 530488861}
+  - component: {fileID: 530488862}
+  - component: {fileID: 530488863}
   m_Layer: 0
   m_Name: Bus
   m_TagString: Untagged
@@ -721,6 +749,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 965e703f09c577d46ab5a76349254bf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &530488863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530488856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc18e7cfb49b340428cdf2714d64721b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 50
 --- !u!1 &667776985
 GameObject:
   m_ObjectHideFlags: 0
@@ -866,8 +907,9 @@ GameObject:
   - component: {fileID: 696139706}
   - component: {fileID: 696139705}
   - component: {fileID: 696139704}
-  - component: {fileID: 696139709}
   - component: {fileID: 696139708}
+  - component: {fileID: 696139709}
+  - component: {fileID: 696139710}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -981,6 +1023,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e43476f24dab54fad31a215208ebcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &696139710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696139703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc18e7cfb49b340428cdf2714d64721b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 25
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1171,8 +1226,9 @@ GameObject:
   - component: {fileID: 1201802665}
   - component: {fileID: 1201802664}
   - component: {fileID: 1201802663}
-  - component: {fileID: 1201802668}
   - component: {fileID: 1201802667}
+  - component: {fileID: 1201802668}
+  - component: {fileID: 1201802669}
   m_Layer: 0
   m_Name: Powerup
   m_TagString: Untagged
@@ -1287,6 +1343,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a42e05c35f9e846812aad0967105c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rotationSpeed: 200
+--- !u!114 &1201802669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201802662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc18e7cfb49b340428cdf2714d64721b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
 --- !u!1 &1736411821
 GameObject:
   m_ObjectHideFlags: 0
