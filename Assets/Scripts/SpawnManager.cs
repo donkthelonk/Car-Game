@@ -14,11 +14,18 @@ public class SpawnManager : MonoBehaviour
     private float yTrafficSpawn = 0.5f;
     private float yPowerupSpawn = 0.25f;
 
+    private float powerupSpawnTime = 5.0f;
+    private float trafficSpawnTime = 1.0f;
+    private float startDelay = 1.0f;
+
     // Start is called before the first frame update
     void Start()
     {
-        SpawnTraffic();
-        SpawnPowerup();
+        // Continuously spawn traffic at trafficSpawnTime intervals
+        InvokeRepeating("SpawnRandomTraffic", startDelay, trafficSpawnTime);
+
+        // Continuously spawn powerups at powerupSpawnTime intervals
+        InvokeRepeating("SpawnPowerup", startDelay, powerupSpawnTime);
     }
 
     // Update is called once per frame
@@ -28,7 +35,7 @@ public class SpawnManager : MonoBehaviour
     }
 
     // Spawn random traffic at top of screen
-    void SpawnTraffic()
+    void SpawnRandomTraffic()
     {
         // Create random spawnPos x value
         float randomX = Random.Range(-xSpawnRange, xSpawnRange);
