@@ -61,9 +61,14 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // Destroy Powerup and apply bonus
         if (other.gameObject.CompareTag("Powerup"))
         {
+            // Destroy powerup
             Destroy(other.gameObject);
+
+            // Apply bonus
+            Debug.Log("Player has gotten a powerup.");
         }
     }
 
