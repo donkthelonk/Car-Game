@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate() 
     {
         // Get input from user and move player
         MovePlayer();
@@ -47,5 +47,29 @@ public class PlayerController : MonoBehaviour
 
         if (transform.position.z < zMin)
             transform.position = new Vector3(transform.position.x, transform.position.y, zMin);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Powerup"))
+        {
+            Destroy(other.gameObject);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Bus"))
+        {
+            Debug.Log("Player has collided with bus.");
+        }
+        else if (collision.gameObject.CompareTag("Car"))
+        {
+            Debug.Log("Player has collided with car.");
+        }
+        else if (collision.gameObject.CompareTag("Crate"))
+        {
+            Debug.Log("Player has collided with crate.");
+        }
     }
 }
