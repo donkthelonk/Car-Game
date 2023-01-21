@@ -18,8 +18,8 @@ public class SpawnManager : MonoBehaviour
     private float yCrateSpawn = 0.25f;
 
     private float trafficSpawnTime = 1.0f;
-    private float powerupSpawnTime = 5.0f;
-    private float crateSpawnTime = 10.0f;
+    private float powerupSpawnTime = 10.0f;
+    private float crateSpawnTime = 5.0f;
     private float startDelay = 1.0f;
 
     // Start is called before the first frame update
