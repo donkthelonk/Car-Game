@@ -43,10 +43,20 @@ public class PlayerController : MonoBehaviour
     void ConstrainPlayerPosition()
     {
         if (transform.position.z > zMax)
+        {
+            // Constrain player to zMax
             transform.position = new Vector3(transform.position.x, transform.position.y, zMax);
+            // Stop velocity
+            playerRb.velocity = Vector3.zero;
+        }
 
         if (transform.position.z < zMin)
+        {
+            // Constrain player to zMin
             transform.position = new Vector3(transform.position.x, transform.position.y, zMin);
+            // Stop velocity
+            playerRb.velocity = Vector3.zero;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
