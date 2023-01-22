@@ -11,8 +11,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playerRb;
 
     public float xRange = 15;
-    public float zMax = 10;
-    public float zMin = -2;
+    public float zMax = 12;
+    public float zMin = -4;
 
     // Start is called before the first frame update
     void Start()

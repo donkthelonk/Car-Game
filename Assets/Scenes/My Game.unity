@@ -520,9 +520,9 @@ MonoBehaviour:
   horizontalInput: 0
   verticalInput: 0
   speed: 10
-  xRange: 11
-  zMax: 10
-  zMin: -2
+  xRange: 15
+  zMax: 12
+  zMin: -4
 --- !u!54 &667776992
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -856,6 +856,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1736411822}
     m_Modifications:
+    - target: {fileID: 76572628, guid: 2e05fe3f163cd834382e94dacc2ba2f3, type: 3}
+      propertyPath: speed
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 5242888374960144756, guid: 2e05fe3f163cd834382e94dacc2ba2f3, type: 3}
       propertyPath: m_RootOrder
       value: 3
