@@ -8,6 +8,7 @@ TagManager:
   - Car
   - Powerup
   - Crate
+  - Road
   layers:
   - Default
   - TransparentFX
@@ -15,7 +16,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Road
   - 
   - 
   - 
