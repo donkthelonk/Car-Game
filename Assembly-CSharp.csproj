@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\MoveDown.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\RepeatStreet.cs" />
+    <Compile Include="Assets\Scripts\Truck.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
