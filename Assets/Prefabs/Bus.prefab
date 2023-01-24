@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7182957982158720953}
   m_Layer: 0
   m_Name: Bus
-  m_TagString: Bus
+  m_TagString: Traffic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

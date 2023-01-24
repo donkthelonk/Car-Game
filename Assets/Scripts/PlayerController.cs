@@ -74,17 +74,13 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Bus"))
+        if (collision.gameObject.CompareTag("Traffic"))
         {
-            Debug.Log("Player has collided with bus.");
-        }
-        else if (collision.gameObject.CompareTag("Car"))
-        {
-            Debug.Log("Player has collided with car.");
+            Debug.Log("Player has collided with traffic.");
         }
         else if (collision.gameObject.CompareTag("Crate"))
         {
-            Debug.Log("Player has collided with crate.");
+            Debug.Log("Player has collided with a crate.");
         }
     }
 }

@@ -4,11 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Bus
-  - Car
   - Powerup
   - Crate
   - Road
+  - Traffic
   layers:
   - Default
   - TransparentFX
