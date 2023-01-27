@@ -7,6 +7,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject[] traffic;
     public GameObject powerup;
     public GameObject crate;
+    public GameManager gameManager;
 
     private float zTrafficSpawn = 15.0f;
     private float zPowerupSpawn = 15.0f;
@@ -56,6 +57,9 @@ public class SpawnManager : MonoBehaviour
 
         // Spawn random traffic at top of screen
         Instantiate(traffic[randomIndex], spawnPos, traffic[randomIndex].gameObject.transform.rotation);
+
+        // Update Score
+        gameManager.UpdateScore(5);
     }
 
     // Spawn powerup at top of screen
