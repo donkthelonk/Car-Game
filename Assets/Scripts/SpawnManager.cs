@@ -34,7 +34,6 @@ public class SpawnManager : MonoBehaviour
 
         // Continuously spawn powerups at crateSpawnTime intervals
         InvokeRepeating("SpawnCrate", startDelay, crateSpawnTime);
-
     }
 
     // Update is called once per frame
