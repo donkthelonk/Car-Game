@@ -307,6 +307,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Truck_Skin01
       objectReference: {fileID: 0}
+    - target: {fileID: 2328455228860544303, guid: 9279a09a09a482f4db9064ebf596b7a3, type: 3}
+      propertyPath: m_TagString
+      value: Traffic
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6012790008298957866, guid: 9279a09a09a482f4db9064ebf596b7a3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9279a09a09a482f4db9064ebf596b7a3, type: 3}
