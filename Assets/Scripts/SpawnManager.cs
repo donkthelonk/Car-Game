@@ -9,19 +9,19 @@ public class SpawnManager : MonoBehaviour
     public GameObject crate;
     public GameManager gameManager;
 
-    private float zTrafficSpawn = 15.0f;
-    private float zPowerupSpawn = 15.0f;
-    private float zCrateSpawn = 15.0f;
-    private float xSpawnRange = 10.0f;
-    //private float zPowerupRange = 5.0f;   // only used if powerup spawns in the road
-    private float yTrafficSpawn = 0.5f;
-    private float yPowerupSpawn = 0.25f;
-    private float yCrateSpawn = 0.25f;
+    [SerializeField] private float zTrafficSpawn = 15.0f;
+    [SerializeField] private float zPowerupSpawn = 15.0f;
+    [SerializeField] private float zCrateSpawn = 15.0f;
+    [SerializeField] private float xSpawnRange = 10.0f;
+    //[SerializeField] private float zPowerupRange = 5.0f;   // only used if powerup spawns in the road
+    [SerializeField] private float yTrafficSpawn = 0.5f;
+    [SerializeField] private float yPowerupSpawn = 0.25f;
+    [SerializeField] private float yCrateSpawn = 0.25f;
 
-    private float trafficSpawnTime = 1.0f;
-    private float powerupSpawnTime = 10.0f;
-    private float crateSpawnTime = 5.0f;
-    private float startDelay = 1.0f;
+    [SerializeField] private float trafficSpawnTime = 1.0f;
+    [SerializeField] private float powerupSpawnTime = 10.0f;
+    [SerializeField] private float crateSpawnTime = 5.0f;
+    [SerializeField] private float startDelay = 1.0f;
 
     // Start is called before the first frame update
     void Start()
