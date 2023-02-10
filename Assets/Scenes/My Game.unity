@@ -170,6 +170,7 @@ MonoBehaviour:
   traffic:
   - {fileID: 4120625234111721420, guid: fe5038100fcfd4246a64676a17104081, type: 3}
   - {fileID: 7490028569600941817, guid: 247fd0f48e10aa84bb9b8dd2545f2f75, type: 3}
+  - {fileID: 3026558115371422382, guid: fce7ea3c8b95cd9478574d3b8813986e, type: 3}
   powerup: {fileID: 9183674061706691891, guid: a5a3d04700a05244ea5f38cc580ede3d, type: 3}
   crate: {fileID: 7315270175278606158, guid: 4ea2249afc689254894101b99409d39a, type: 3}
   gameManager: {fileID: 1973264932}
@@ -896,7 +897,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 983e27764b992664b9c49d79cc6015d9, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
