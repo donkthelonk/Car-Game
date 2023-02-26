@@ -57,20 +57,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\RotateWheels.cs" />
-    <Compile Include="Assets\Scripts\Truck_OLD.cs" />
+    <Compile Include="Assets\Scripts\OLD\RotateWheels_OLD.cs" />
+    <Compile Include="Assets\Scripts\OLD\Truck_OLD.cs" />
+    <Compile Include="Assets\Scripts\RotateWheelsZ.cs" />
     <Compile Include="Assets\Scripts\Crate.cs" />
-    <Compile Include="Assets\Scripts\Bus_OLD.cs" />
+    <Compile Include="Assets\Scripts\OLD\Bus_OLD.cs" />
+    <Compile Include="Assets\Scripts\RotateWheelsX.cs" />
     <Compile Include="Assets\Scripts\Timer.cs" />
     <Compile Include="Assets\Scripts\Powerup.cs" />
-    <Compile Include="Assets\Scripts\RotateTruckWheels.cs" />
+    <Compile Include="Assets\Scripts\OLD\RotateTruckWheels_OLD.cs" />
     <Compile Include="Assets\Scripts\SpawnManager.cs" />
-    <Compile Include="Assets\Scripts\Car_OLD.cs" />
+    <Compile Include="Assets\Scripts\OLD\Car_OLD.cs" />
     <Compile Include="Assets\Scripts\MoveDown.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\RepeatStreet.cs" />
-    <Compile Include="Assets\Scripts\RotateWheelsX.cs" />
-    <Compile Include="Assets\Scripts\RotateWheelsZ.cs" />
+    <Compile Include="Assets\Scripts\NewBehaviourScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
