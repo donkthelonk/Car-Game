@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RepeatStreet : MonoBehaviour
 {
-    public float speed = 10.0f;
+    [SerializeField] private float speed = 10.0f;
 
     private Vector3 startPos;
     private float repeatLength;
