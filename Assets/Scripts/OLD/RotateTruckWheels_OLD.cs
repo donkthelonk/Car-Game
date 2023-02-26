@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotateTruckWheels : MonoBehaviour
+public class RotateTruckWheels_OLD : MonoBehaviour
 {
     private int rotationSpeed = 1000;
 
