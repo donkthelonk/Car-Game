@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class MoveDown : MonoBehaviour
 {
-    public float speed = 5.0f;
+    [SerializeField] private float speed = 5.0f;
 
-    private float zDestroy = -10.0f;
-    private Rigidbody objectRb;
+    [SerializeField] private float zDestroy = -10.0f;
+    [SerializeField] private Rigidbody objectRb;
 
     // Start is called before the first frame update
     void Start()
