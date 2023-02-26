@@ -42,6 +42,8 @@ public class SpawnManager : MonoBehaviour
         
     }
 
+    /* Below methods are examples of Abstraction */
+
     // Spawn random traffic at top of screen
     void SpawnRandomTraffic()
     {
