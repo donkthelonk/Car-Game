@@ -12,16 +12,26 @@ public class RepeatStreet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startPos = transform.position;
-        repeatLength = GetComponent<BoxCollider>().size.z / 2;
+        InitializeStreet();
     }
 
     // Update is called once per frame
     void Update()
     {
+        UpdatePosition();
+    }
+
+    void InitializeStreet()
+    {
+        startPos = transform.position;
+        repeatLength = GetComponent<BoxCollider>().size.z / 2;
+    }
+
+    void UpdatePosition()
+    {
         transform.Translate(Vector3.back * speed * Time.deltaTime);
 
-        if(transform.position.z < startPos.z - repeatLength)
+        if (transform.position.z < startPos.z - repeatLength)
         {
             transform.position = startPos;
         }
