@@ -12,8 +12,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        score = 0;
-        UpdateScore(0);
+        InitializeScore();
     }
 
     // Update is called once per frame
@@ -22,6 +21,14 @@ public class GameManager : MonoBehaviour
 
     }
 
+    // Method to initialize the score when the game scene starts
+    void InitializeScore()
+    {
+        score = 0;
+        UpdateScore(0);
+    }
+
+    // Method to Update the score and display the updated score
     public void UpdateScore(int scoreToAdd)
     {
         score += scoreToAdd;
