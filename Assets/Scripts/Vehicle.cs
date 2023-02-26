@@ -23,4 +23,14 @@ public class Vehicle : MonoBehaviour
     {
 
     }
+
+    void Honk()
+    {
+
+    }
+
+    void Move()
+    {
+
+    }
 }
