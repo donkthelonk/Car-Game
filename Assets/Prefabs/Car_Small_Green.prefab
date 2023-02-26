@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3486794739627621543}
   - component: {fileID: 3486794739627621542}
   - component: {fileID: 3486794739627621538}
-  - component: {fileID: 3486794739627621539}
   - component: {fileID: 3486794739627621536}
   m_Layer: 0
   m_Name: Car_Small_Green
@@ -117,18 +116,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
---- !u!114 &3486794739627621539
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3486794739627621545}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14e43476f24dab54fad31a215208ebcf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3486794739627621536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 250
+  zDestroy: -10
 --- !u!1001 &1551718103613796079
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -211,6 +199,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4306cd5466419674c91dc425c00e18db, type: 3}
+--- !u!1 &1551718103613740217 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 129622, guid: 4306cd5466419674c91dc425c00e18db, type: 3}
+  m_PrefabInstance: {fileID: 1551718103613796079}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4253060522965590552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551718103613740217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34722bcff9bb97e4e817e3d7ab1f6a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1551718103613904693 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 162266, guid: 4306cd5466419674c91dc425c00e18db, type: 3}
@@ -229,6 +234,57 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.050098944, y: 0.017727604, z: 0.019182103}
   m_Center: {x: 0, y: -0.0007938802, z: 0}
+--- !u!1 &1551718103613936775 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 195176, guid: 4306cd5466419674c91dc425c00e18db, type: 3}
+  m_PrefabInstance: {fileID: 1551718103613796079}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7457965838265925918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551718103613936775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34722bcff9bb97e4e817e3d7ab1f6a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1551718103613953841 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 178654, guid: 4306cd5466419674c91dc425c00e18db, type: 3}
+  m_PrefabInstance: {fileID: 1551718103613796079}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7820355581638532445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551718103613953841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34722bcff9bb97e4e817e3d7ab1f6a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1551718103613958037 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 166266, guid: 4306cd5466419674c91dc425c00e18db, type: 3}
+  m_PrefabInstance: {fileID: 1551718103613796079}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5443233444846557604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551718103613958037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34722bcff9bb97e4e817e3d7ab1f6a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1551718103614100737 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 490478, guid: 4306cd5466419674c91dc425c00e18db, type: 3}
