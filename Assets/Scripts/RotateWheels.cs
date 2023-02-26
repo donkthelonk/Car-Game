@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RotateWheels : MonoBehaviour
 {
-    private int rotSpeed = 1000;
+    private int rotationSpeed = 1000;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +15,6 @@ public class RotateWheels : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(new Vector3(Time.deltaTime * rotSpeed, 0, 0));
+        transform.Rotate(new Vector3(Time.deltaTime * rotationSpeed, 0, 0));
     }
 }
