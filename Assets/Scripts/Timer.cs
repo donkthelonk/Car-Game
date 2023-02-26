@@ -5,8 +5,9 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    public float timeLeft;
-    public bool timerOn = false;
+    [SerializeField] private float timeLeft;
+    [SerializeField] private bool timerOn = false;
+
     public TextMeshProUGUI timerText;
 
     // Start is called before the first frame update
