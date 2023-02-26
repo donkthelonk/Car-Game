@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float verticalInput;
     [SerializeField] private float speed = 10.0f;
 
-    [SerializeField] private Rigidbody playerRb;
+    private Rigidbody playerRb;
 
     [SerializeField] private float xRange = 15;
     [SerializeField] private float zMax = 10;
