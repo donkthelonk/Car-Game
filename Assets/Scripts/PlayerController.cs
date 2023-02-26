@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float horizontalInput;
-    public float verticalInput;
-    public float speed = 10.0f;
+    [SerializeField] private float horizontalInput;
+    [SerializeField] private float verticalInput;
+    [SerializeField] private float speed = 10.0f;
 
-    private Rigidbody playerRb;
+    [SerializeField] private Rigidbody playerRb;
 
-    public float xRange = 15;
-    public float zMax = 10;
-    public float zMin = -4;
+    [SerializeField] private float xRange = 15;
+    [SerializeField] private float zMax = 10;
+    [SerializeField] private float zMin = -4;
 
     // Start is called before the first frame update
     void Start()
