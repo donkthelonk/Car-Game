@@ -10,7 +10,9 @@ public class Vehicle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Honk();
+        Move();
+        ChangeLanes();
     }
 
     // Update is called once per frame
@@ -21,16 +23,16 @@ public class Vehicle : MonoBehaviour
 
     public virtual void ChangeLanes()
     {
-
+        Debug.Log("Vehicle ChangeLanes() called!");
     }
 
     void Honk()
     {
-
+        Debug.Log("Vehicle Honk() called!");
     }
 
     void Move()
     {
-
+        Debug.Log("Vehicle Move() called!");
     }
 }
