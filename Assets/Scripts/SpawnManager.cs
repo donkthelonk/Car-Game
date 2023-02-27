@@ -12,7 +12,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float zTrafficSpawn = 15.0f;
     [SerializeField] private float zPowerupSpawn = 15.0f;
     [SerializeField] private float zCrateSpawn = 15.0f;
-    [SerializeField] private float xSpawnRange = 10.0f;
+    [SerializeField] private float xSpawnRange = 12.0f;
     //[SerializeField] private float zPowerupRange = 5.0f;   // only used if powerup spawns in the road
     [SerializeField] private float yTrafficSpawn = 0.5f;
     [SerializeField] private float yPowerupSpawn = 0.25f;
