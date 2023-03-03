@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 486866}
   - component: {fileID: 3315536}
   - component: {fileID: 2348152}
+  - component: {fileID: 6996871643201579295}
   m_Layer: 0
   m_Name: Wheel2-3
   m_TagString: Untagged
@@ -84,6 +85,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6996871643201579295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34722bcff9bb97e4e817e3d7ab1f6a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &125260
 GameObject:
   m_ObjectHideFlags: 0
@@ -95,6 +108,7 @@ GameObject:
   - component: {fileID: 412698}
   - component: {fileID: 3304928}
   - component: {fileID: 2385104}
+  - component: {fileID: 7908429558176018047}
   m_Layer: 0
   m_Name: Wheel2-2
   m_TagString: Untagged
@@ -168,6 +182,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7908429558176018047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34722bcff9bb97e4e817e3d7ab1f6a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &160038
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,6 +205,7 @@ GameObject:
   - component: {fileID: 475332}
   - component: {fileID: 3324316}
   - component: {fileID: 2315196}
+  - component: {fileID: 242054601}
   m_Layer: 0
   m_Name: Car_2_Red
   m_TagString: Untagged
@@ -193,9 +220,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160038}
-  m_LocalRotation: {x: 0.000000021855698, y: -0.00000003774895, z: 8.250296e-16, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalScale: {x: 50, y: 50, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 409372}
@@ -257,6 +284,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &242054601
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160038}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.052652214, y: 0.01501649, z: 0.020943196}
+  m_Center: {x: 0.00004240751, y: -0.0000434798, z: 3.865246e-19}
 --- !u!1 &181436
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,6 +308,7 @@ GameObject:
   - component: {fileID: 409372}
   - component: {fileID: 3301470}
   - component: {fileID: 2397422}
+  - component: {fileID: 7199585575615575288}
   m_Layer: 0
   m_Name: Wheel2-1
   m_TagString: Untagged
@@ -341,6 +382,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7199585575615575288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34722bcff9bb97e4e817e3d7ab1f6a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &184260
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,6 +405,7 @@ GameObject:
   - component: {fileID: 430610}
   - component: {fileID: 3334648}
   - component: {fileID: 2367848}
+  - component: {fileID: 3328254634365641307}
   m_Layer: 0
   m_Name: Wheel2-4
   m_TagString: Untagged
@@ -425,3 +479,15 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &3328254634365641307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34722bcff9bb97e4e817e3d7ab1f6a7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
