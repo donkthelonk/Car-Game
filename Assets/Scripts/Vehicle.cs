@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Vehicle : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    [SerializeField] private int mass;
+    //[SerializeField] private float speed;
+    //[SerializeField] private int mass;
 
     // Start is called before the first frame update
     void Start()
