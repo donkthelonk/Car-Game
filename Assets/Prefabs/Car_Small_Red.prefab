@@ -144,6 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5475bcefcc727ff4c9df34a8e5d8aec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vehicleAudio: {fileID: 0}
 --- !u!82 &-503263874180014945
 AudioSource:
   m_ObjectHideFlags: 0

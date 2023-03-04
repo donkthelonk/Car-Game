@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &25601757
 Transform:
   m_ObjectHideFlags: 0
@@ -169,6 +169,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   traffic:
   - {fileID: 4120625234111721420, guid: fe5038100fcfd4246a64676a17104081, type: 3}
+  - {fileID: 7490028569600941817, guid: 247fd0f48e10aa84bb9b8dd2545f2f75, type: 3}
+  - {fileID: 7490028569600941817, guid: 247fd0f48e10aa84bb9b8dd2545f2f75, type: 3}
   powerup: {fileID: 9183674061706691891, guid: a5a3d04700a05244ea5f38cc580ede3d, type: 3}
   crate: {fileID: 7315270175278606158, guid: 4ea2249afc689254894101b99409d39a, type: 3}
   gameManager: {fileID: 1973264932}
@@ -839,7 +841,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 983e27764b992664b9c49d79cc6015d9, type: 3}
@@ -1303,6 +1305,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 77071886, guid: d20dbcb339817cf44959c6a33ec1385e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 536367551, guid: d20dbcb339817cf44959c6a33ec1385e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 713684704, guid: d20dbcb339817cf44959c6a33ec1385e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1553221609, guid: d20dbcb339817cf44959c6a33ec1385e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5766291413183700145, guid: d20dbcb339817cf44959c6a33ec1385e, type: 3}
       propertyPath: m_Name
       value: Player

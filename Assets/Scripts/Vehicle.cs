@@ -6,7 +6,7 @@ public class Vehicle : MonoBehaviour
 {
     //[SerializeField] private float speed;
     //[SerializeField] private int mass;
-    public AudioSource vehicleAudio;
+    private AudioSource vehicleAudio;
 
     // Start is called before the first frame update
     void Start()
