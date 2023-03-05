@@ -6,14 +6,15 @@ public class Vehicle : MonoBehaviour
 {
     //[SerializeField] private float speed;
     //[SerializeField] private int mass;
-    private AudioSource vehicleAudio;
+    protected AudioSource vehicleAudio;
+
+    public AudioClip honkClip;
 
     // Start is called before the first frame update
     void Start()
     {
         vehicleAudio = GetComponent<AudioSource>();
 
-        Honk();
         Move();
         ChangeLanes();
     }
@@ -29,7 +30,7 @@ public class Vehicle : MonoBehaviour
         // when Vehicle collides with the player object
         if(collision.gameObject.CompareTag("Player"))
         {
-            vehicleAudio.Play();
+            Honk();
         }
     }
 
@@ -38,9 +39,12 @@ public class Vehicle : MonoBehaviour
         Debug.Log("Vehicle ChangeLanes() called!");
     }
 
-    void Honk()
+    protected virtual void Honk()
     {
         Debug.Log("Vehicle Honk() called!");
+
+        // play the audio clip once at 50% volume
+        vehicleAudio.PlayOneShot(honkClip, 0.5f);
     }
 
     void Move()
