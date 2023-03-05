@@ -18,7 +18,7 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] private float yPowerupSpawn = 0.25f;
     [SerializeField] private float yCrateSpawn = 0.25f;
 
-    [SerializeField] private float trafficSpawnTime = 0.5f;
+    [SerializeField] private float trafficSpawnTime = 1.0f;
     [SerializeField] private float powerupSpawnTime = 10.0f;
     [SerializeField] private float crateSpawnTime = 5.0f;
     [SerializeField] private float startDelay = 1.0f;
@@ -27,7 +27,7 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         // Continuously spawn traffic at trafficSpawnTime intervals
-        InvokeRepeating("SpawnRandomTraffic", startDelay, trafficSpawnTime/5);
+        InvokeRepeating("SpawnRandomTraffic", startDelay, trafficSpawnTime);
 
         // Continuously spawn powerups at powerupSpawnTime intervals
         InvokeRepeating("SpawnPowerup", startDelay, powerupSpawnTime);
