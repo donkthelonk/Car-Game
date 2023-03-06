@@ -57,7 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Car.cs" />
+    <Compile Include="Assets\Scripts\Vehicles\Car.cs" />
     <Compile Include="Assets\Scripts\OLD\RotateWheels_OLD.cs" />
     <Compile Include="Assets\Scripts\OLD\Truck_OLD.cs" />
     <Compile Include="Assets\Scripts\RotateWheelsZ.cs" />
@@ -69,10 +69,11 @@
     <Compile Include="Assets\Scripts\OLD\RotateTruckWheels_OLD.cs" />
     <Compile Include="Assets\Scripts\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\OLD\Car_OLD.cs" />
-    <Compile Include="Assets\Scripts\Vehicle.cs" />
+    <Compile Include="Assets\Scripts\Vehicles\Vehicle.cs" />
     <Compile Include="Assets\Scripts\MoveDown.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\RepeatStreet.cs" />
+    <Compile Include="Assets\Scripts\Vehicles\Truck.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
