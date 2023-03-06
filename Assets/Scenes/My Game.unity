@@ -168,8 +168,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   traffic:
-  - {fileID: 4120625234111721420, guid: fe5038100fcfd4246a64676a17104081, type: 3}
+  - {fileID: 7490028569600941817, guid: 247fd0f48e10aa84bb9b8dd2545f2f75, type: 3}
   - {fileID: 3026558115371422382, guid: fce7ea3c8b95cd9478574d3b8813986e, type: 3}
+  - {fileID: 3486794739627621545, guid: cdedf66fea81c9f4f97cd8f6c53a87b9, type: 3}
+  - {fileID: 2256152432530009732, guid: 660beb818b484db4fb9d7fecd51e0df7, type: 3}
+  - {fileID: 6977198942250862937, guid: 8ba4e3b48f1d3d44da8ab40956e5040b, type: 3}
+  - {fileID: 8124419730314626569, guid: 485276dd9a4994e4b8a6ce727070b104, type: 3}
+  - {fileID: 4120625234111721420, guid: fe5038100fcfd4246a64676a17104081, type: 3}
   powerup: {fileID: 9183674061706691891, guid: a5a3d04700a05244ea5f38cc580ede3d, type: 3}
   crate: {fileID: 7315270175278606158, guid: 4ea2249afc689254894101b99409d39a, type: 3}
   gameManager: {fileID: 1973264932}

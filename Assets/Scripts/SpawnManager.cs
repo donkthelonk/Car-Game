@@ -27,7 +27,7 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
         // Continuously spawn traffic at trafficSpawnTime intervals
-        InvokeRepeating("SpawnRandomTraffic", startDelay, trafficSpawnTime);
+        InvokeRepeating("SpawnRandomTraffic", startDelay, trafficSpawnTime/2);
 
         // Continuously spawn powerups at powerupSpawnTime intervals
         InvokeRepeating("SpawnPowerup", startDelay, powerupSpawnTime);
