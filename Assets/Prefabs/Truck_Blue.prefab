@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 4120625234111721421}
   - component: {fileID: 4120625234111721417}
   - component: {fileID: 4120625234111721419}
-  - component: {fileID: 2865026528896569610}
   - component: {fileID: -8057989878028052561}
+  - component: {fileID: -972679526063018263}
   m_Layer: 0
   m_Name: Truck_Blue
   m_TagString: Traffic
@@ -132,20 +132,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2000
   zDestroy: -10
---- !u!114 &2865026528896569610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4120625234111721420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd2110169ad0e7f4ab734b0bb6abbbde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vehicleAudio: {fileID: 0}
-  honkClip: {fileID: 8300000, guid: 96d3b2204e1043f46833f38b50dd8bd4, type: 3}
 --- !u!82 &-8057989878028052561
 AudioSource:
   m_ObjectHideFlags: 0
@@ -242,6 +228,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-972679526063018263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4120625234111721420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8b750812e4340b4f8aecd133f7909df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  honkClip: {fileID: 8300000, guid: 96d3b2204e1043f46833f38b50dd8bd4, type: 3}
 --- !u!1001 &418641442
 PrefabInstance:
   m_ObjectHideFlags: 0

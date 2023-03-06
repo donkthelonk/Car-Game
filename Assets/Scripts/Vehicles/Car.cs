@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Car : Vehicle
 {
+    private bool isQuirky = false;
+
     private void Start()
     {
         vehicleAudio = GetComponent<AudioSource>();
@@ -13,7 +15,10 @@ public class Car : Vehicle
 
     private void Update()
     {
-        Quirk();
+        if (isQuirky)
+        {
+            Quirk();
+        }
     }
 
     public override void ChangeLanes()
@@ -27,7 +32,9 @@ public class Car : Vehicle
         Debug.Log("Car Honk() called!");
 
         // play the audio clip once at 50% volume
-        vehicleAudio.PlayOneShot(honkClip, 0.5f);
+        //vehicleAudio.PlayOneShot(honkClip, 0.5f);
+
+        vehicleAudio.Play();
 
     }
 
@@ -36,6 +43,7 @@ public class Car : Vehicle
         // when Vehicle collides with the player object
         if (collision.gameObject.CompareTag("Player"))
         {
+            isQuirky = true;
             Honk();
         }
     }

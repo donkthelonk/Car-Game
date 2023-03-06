@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\RepeatStreet.cs" />
     <Compile Include="Assets\Scripts\Vehicles\Truck.cs" />
+    <Compile Include="Assets\Scripts\Vehicles\Bus.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
