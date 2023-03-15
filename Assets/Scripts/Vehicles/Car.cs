@@ -2,9 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Car : Vehicle
+// INHERITANCE derived class
+class Car : Vehicle
 {
     private bool isQuirky = false;
+
+    private int number = 0;
+
+    // ENCAPSULATION private variable setter
+    public void SetNumber(int newNumber)
+    {
+        number = newNumber;
+    }
+
+    // ENCAPSULATION private variable getter
+    public int GetNumber()
+    {
+        return number;
+    }
+
+    // ABSTRACTION function override
+    protected override void Quirk()
+    {
+        Debug.Log("Car Quirk() called!");
+
+        int rotationSpeed = 1000;
+
+        transform.Rotate(new Vector3(0, Time.deltaTime * rotationSpeed, 0));
+    }
 
     private void Start()
     {
@@ -21,19 +46,17 @@ public class Car : Vehicle
         }
     }
 
-    public override void ChangeLanes()
+    // POLYMORPHISM function override
+    protected override void ChangeLanes()
     {
         Debug.Log("Car ChangeLanes() called!");
         base.ChangeLanes();
     }
 
+    // POLYMORPHISM function override
     protected override void Honk()
     {
         Debug.Log("Car Honk() called!");
-
-        // play the audio clip once at 50% volume
-        //vehicleAudio.PlayOneShot(honkClip, 0.5f);
-
         vehicleAudio.Play();
 
     }
@@ -46,14 +69,5 @@ public class Car : Vehicle
             isQuirky = true;
             Honk();
         }
-    }
-
-    protected override void Quirk()
-    {
-        Debug.Log("Car Quirk() called!");
-
-        int rotationSpeed = 1000;
-
-        transform.Rotate(new Vector3(0, Time.deltaTime * rotationSpeed, 0));
     }
 }

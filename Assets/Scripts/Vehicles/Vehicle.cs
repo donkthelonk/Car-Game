@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Vehicle : MonoBehaviour
+// INHERITANCE base class
+abstract class Vehicle : MonoBehaviour
 {
-    //[SerializeField] private float speed;
-    //[SerializeField] private int mass;
     protected AudioSource vehicleAudio;
 
     public AudioClip honkClip;
+
+    // ABSTRACTION abstract function
+    protected abstract void Quirk();
 
     // Start is called before the first frame update
     void Start()
@@ -34,11 +36,13 @@ public class Vehicle : MonoBehaviour
         }
     }
 
-    public virtual void ChangeLanes()
+    // POLYMORPHISM virtual function 
+    protected virtual void ChangeLanes()
     {
         Debug.Log("Vehicle ChangeLanes() called!");
     }
 
+    // POLYMORPHISM virtual function 
     protected virtual void Honk()
     {
         Debug.Log("Vehicle Honk() called!");
@@ -50,10 +54,5 @@ public class Vehicle : MonoBehaviour
     void Move()
     {
         Debug.Log("Vehicle Move() called!");
-    }
-
-    protected virtual void Quirk()
-    {
-        // no quirk for base class
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Truck : Vehicle
+class Truck : Vehicle
 {
     private bool isQuirky = false;
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bus : Vehicle
+class Bus : Vehicle
 {
     [SerializeField] private float speed = 100.0f;
 
