@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -42,5 +43,12 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Over!");
         gameOverScreen.SetActive(true);
         Time.timeScale = 0;
+    }
+
+    // Method to restart the game
+    public void RestartGame()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
