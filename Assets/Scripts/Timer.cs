@@ -17,6 +17,7 @@ public class Timer : MonoBehaviour
         timerOn = true;
         if (gameManager == null)
             gameManager = FindObjectOfType<GameManager>();
+        updateTimer(timeLeft);
     }
 
     // Update is called once per frame
@@ -41,12 +42,6 @@ public class Timer : MonoBehaviour
 
     void updateTimer(float currentTime)
     {
-        currentTime += 1;
-
-        float minutes = Mathf.FloorToInt(currentTime / 60);
-        float seconds = Mathf.FloorToInt(currentTime % 60);
-
-        //timerText.text = string.Format("{0:00} : {1:00}", minutes, seconds);
-        timerText.text = "Time: " + seconds;
+        timerText.text = "Time: " + Mathf.CeilToInt(currentTime);
     }
 }
