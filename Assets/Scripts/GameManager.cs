@@ -34,4 +34,11 @@ public class GameManager : MonoBehaviour
         score += scoreToAdd;
         scoreText.text = "Score: " + score;
     }
+
+    // Method to end the game
+    public void EndGame()
+    {
+        Debug.Log("Game Over!");
+        Time.timeScale = 0;
+    }
 }

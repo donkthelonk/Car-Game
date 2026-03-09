@@ -9,11 +9,14 @@ public class Timer : MonoBehaviour
     [SerializeField] private bool timerOn = false;
 
     public TextMeshProUGUI timerText;
+    public GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
         timerOn = true;
+        if (gameManager == null)
+            gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -31,6 +34,7 @@ public class Timer : MonoBehaviour
                 Debug.Log("Time is Up!");
                 timeLeft = 0;
                 timerOn = false;
+                gameManager.EndGame();
             }
         }
     }
