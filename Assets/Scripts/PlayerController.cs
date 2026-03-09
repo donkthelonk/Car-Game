@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed = 10.0f;
 
     private Rigidbody playerRb;
+    private GameManager gameManager;
 
     [SerializeField] private float xRange = 15;
     [SerializeField] private float zMax = 10;
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -77,6 +79,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Traffic"))
         {
             Debug.Log("Player has collided with traffic.");
+            gameManager.TakeDamage();
         }
         else if (collision.gameObject.CompareTag("Crate"))
         {

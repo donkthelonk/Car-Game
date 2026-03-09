@@ -8,14 +8,19 @@ public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI finalScoreText;
+    public TextMeshProUGUI healthText;
     public GameObject gameOverScreen;
 
+    [SerializeField] private int maxHealth = 3;
+
     private int score;
+    private int health;
 
     // Start is called before the first frame update
     void Start()
     {
         InitializeScore();
+        InitializeHealth();
     }
 
     // Update is called once per frame
@@ -29,6 +34,23 @@ public class GameManager : MonoBehaviour
     {
         score = 0;
         UpdateScore(0);
+    }
+
+    // Method to initialize health when the game scene starts
+    void InitializeHealth()
+    {
+        health = maxHealth;
+        healthText.text = "Health: " + health;
+    }
+
+    // Method to decrease health by 1 and end the game if health reaches 0
+    public void TakeDamage()
+    {
+        health -= 1;
+        healthText.text = "Health: " + health;
+
+        if (health <= 0)
+            EndGame();
     }
 
     // Method to Update the score and display the updated score
