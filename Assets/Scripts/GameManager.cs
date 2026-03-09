@@ -7,6 +7,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI finalScoreText;
     public GameObject gameOverScreen;
 
     private int score;
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Game Over!");
         gameOverScreen.SetActive(true);
+        finalScoreText.text = "Score: " + score;
         Time.timeScale = 0;
     }
 
