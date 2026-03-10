@@ -73,6 +73,15 @@ public class GameManager : MonoBehaviour
     {
         score += scoreToAdd;
         scoreText.text = "Score: " + score;
+        if (scoreToAdd > 0)
+            StartCoroutine(FlashScoreText());
+    }
+
+    IEnumerator FlashScoreText()
+    {
+        scoreText.text = "Score: <color=green>" + score + "</color>";
+        yield return new WaitForSeconds(0.3f);
+        scoreText.text = "Score: " + score;
     }
 
     // Method to end the game
