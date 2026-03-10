@@ -9,7 +9,7 @@ public class Timer : MonoBehaviour
     [SerializeField] private bool timerOn = false;
     private bool isFlashing = false;
 
-    public TextMeshProUGUI timerText;
+    public TextMeshProUGUI timerValueText;
     public GameManager gameManager;
 
     // Start is called before the first frame update
@@ -50,15 +50,15 @@ public class Timer : MonoBehaviour
 
     void updateTimer(float currentTime)
     {
-        timerText.text = "Time: " + Mathf.CeilToInt(currentTime);
+        timerValueText.text = Mathf.CeilToInt(currentTime).ToString();
     }
 
     IEnumerator FlashTimerText()
     {
         isFlashing = true;
-        timerText.text = "Time: <color=yellow><size=125%>" + Mathf.CeilToInt(timeLeft) + "</size></color>";
+        timerValueText.text = "<color=yellow><size=110%>" + Mathf.CeilToInt(timeLeft) + "</size></color>";
         yield return new WaitForSeconds(0.3f);
         isFlashing = false;
-        timerText.text = "Time: " + Mathf.CeilToInt(timeLeft);
+        timerValueText.text = Mathf.CeilToInt(timeLeft).ToString();
     }
 }

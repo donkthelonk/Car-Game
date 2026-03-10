@@ -6,9 +6,9 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI scoreValueText;
+    public TextMeshProUGUI healthValueText;
     public TextMeshProUGUI finalScoreText;
-    public TextMeshProUGUI healthText;
     public GameObject gameOverScreen;
     public Timer timer;
 
@@ -41,14 +41,14 @@ public class GameManager : MonoBehaviour
     void InitializeHealth()
     {
         health = maxHealth;
-        healthText.text = "Health: " + health;
+        healthValueText.text = health.ToString();
     }
 
     // Method to decrease health and end the game if health reaches 0
     public void TakeDamage(int amount)
     {
         health -= amount;
-        healthText.text = "Health: " + health;
+        healthValueText.text = health.ToString();
         StartCoroutine(FlashHealthText());
 
         if (health <= 0)
@@ -57,9 +57,9 @@ public class GameManager : MonoBehaviour
 
     IEnumerator FlashHealthText()
     {
-        healthText.text = "Health: <color=red><size=125%>" + health + "</size></color>";
+        healthValueText.text = "<color=red><size=110%>" + health + "</size></color>";
         yield return new WaitForSeconds(0.3f);
-        healthText.text = "Health: " + health;
+        healthValueText.text = health.ToString();
     }
 
     // Method to add time to the timer
@@ -72,23 +72,23 @@ public class GameManager : MonoBehaviour
     public void RestoreHealth()
     {
         health = Mathf.Min(health + 1, maxHealth);
-        healthText.text = "Health: " + health;
+        healthValueText.text = health.ToString();
     }
 
     // Method to Update the score and display the updated score
     public void UpdateScore(int scoreToAdd)
     {
         score += scoreToAdd;
-        scoreText.text = "Score: " + score;
+        scoreValueText.text = score.ToString();
         if (scoreToAdd > 0)
             StartCoroutine(FlashScoreText());
     }
 
     IEnumerator FlashScoreText()
     {
-        scoreText.text = "Score: <color=green><size=125%>" + score + "</size></color>";
+        scoreValueText.text = "<color=green><size=110%>" + score + "</size></color>";
         yield return new WaitForSeconds(0.3f);
-        scoreText.text = "Score: " + score;
+        scoreValueText.text = score.ToString();
     }
 
     // Method to end the game
