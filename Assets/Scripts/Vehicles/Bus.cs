@@ -32,15 +32,14 @@ class Bus : Vehicle
         {
             isQuirky = true;
             Honk();
+            Explode();
         }
     }
 
     protected override void Honk()
     {
         Debug.Log("Bus Honk() called!");
-
-        // play the audio clip
-        vehicleAudio.Play();
+        AudioSource.PlayClipAtPoint(honkClip, transform.position);
     }
 
     protected override void Quirk()

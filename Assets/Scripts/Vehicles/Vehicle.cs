@@ -8,6 +8,7 @@ abstract class Vehicle : MonoBehaviour
     protected AudioSource vehicleAudio;
 
     public AudioClip honkClip;
+    public GameObject explosionPrefab;
 
     // ABSTRACTION abstract function
     protected abstract void Quirk();
@@ -33,7 +34,14 @@ abstract class Vehicle : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             Honk();
+            Explode();
         }
+    }
+
+    protected void Explode()
+    {
+        Instantiate(explosionPrefab, transform.position, explosionPrefab.transform.rotation);
+        Destroy(gameObject);
     }
 
     // POLYMORPHISM virtual function 

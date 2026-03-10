@@ -57,17 +57,19 @@ class Car : Vehicle
     protected override void Honk()
     {
         Debug.Log("Car Honk() called!");
-        vehicleAudio.Play();
-
+        AudioSource.PlayClipAtPoint(honkClip, transform.position);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Car OnCollisionEnter hit: " + collision.gameObject.name);
+
         // when Vehicle collides with the player object
         if (collision.gameObject.CompareTag("Player"))
         {
             isQuirky = true;
             Honk();
+            Explode();
         }
     }
 }
