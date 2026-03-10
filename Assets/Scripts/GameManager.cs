@@ -16,10 +16,14 @@ public class GameManager : MonoBehaviour
 
     private int score;
     private int health;
+    private float scoreValueFontSize;
+    private float healthValueFontSize;
 
     // Start is called before the first frame update
     void Start()
     {
+        scoreValueFontSize = scoreValueText.fontSize;
+        healthValueFontSize = healthValueText.fontSize;
         InitializeScore();
         InitializeHealth();
     }
@@ -57,8 +61,10 @@ public class GameManager : MonoBehaviour
 
     IEnumerator FlashHealthText()
     {
-        healthValueText.text = "<color=red><size=110%>" + health + "</size></color>";
+        healthValueText.fontSize = healthValueFontSize * 1.1f;
+        healthValueText.text = "<color=red>" + health + "</color>";
         yield return new WaitForSeconds(0.3f);
+        healthValueText.fontSize = healthValueFontSize;
         healthValueText.text = health.ToString();
     }
 
@@ -86,8 +92,10 @@ public class GameManager : MonoBehaviour
 
     IEnumerator FlashScoreText()
     {
-        scoreValueText.text = "<color=green><size=110%>" + score + "</size></color>";
+        scoreValueText.fontSize = scoreValueFontSize * 1.1f;
+        scoreValueText.text = "<color=green>" + score + "</color>";
         yield return new WaitForSeconds(0.3f);
+        scoreValueText.fontSize = scoreValueFontSize;
         scoreValueText.text = score.ToString();
     }
 

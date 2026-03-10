@@ -11,10 +11,12 @@ public class Timer : MonoBehaviour
 
     public TextMeshProUGUI timerValueText;
     public GameManager gameManager;
+    private float timerValueFontSize;
 
     // Start is called before the first frame update
     void Start()
     {
+        timerValueFontSize = timerValueText.fontSize;
         timerOn = true;
         if (gameManager == null)
             gameManager = FindObjectOfType<GameManager>();
@@ -56,8 +58,10 @@ public class Timer : MonoBehaviour
     IEnumerator FlashTimerText()
     {
         isFlashing = true;
-        timerValueText.text = "<color=yellow><size=110%>" + Mathf.CeilToInt(timeLeft) + "</size></color>";
+        timerValueText.fontSize = timerValueFontSize * 1.1f;
+        timerValueText.text = "<color=yellow>" + Mathf.CeilToInt(timeLeft) + "</color>";
         yield return new WaitForSeconds(0.3f);
+        timerValueText.fontSize = timerValueFontSize;
         isFlashing = false;
         timerValueText.text = Mathf.CeilToInt(timeLeft).ToString();
     }
