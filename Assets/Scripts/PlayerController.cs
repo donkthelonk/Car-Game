@@ -10,17 +10,28 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody playerRb;
     private GameManager gameManager;
+    private Renderer[] playerRenderers;
+    private Color[] originalColors;
     private bool isInvincible = false;
 
     [SerializeField] private float xRange = 15;
     [SerializeField] private float zMax = 10;
     [SerializeField] private float zMin = -4;
 
+    [SerializeField] private float controlsRandomizeInterval = 5.0f;
+    private int horizontalMultiplier = 1;
+    private int verticalMultiplier = 1;
+
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
         gameManager = FindObjectOfType<GameManager>();
+        playerRenderers = GetComponentsInChildren<Renderer>();
+        originalColors = new Color[playerRenderers.Length];
+        for (int i = 0; i < playerRenderers.Length; i++)
+            originalColors[i] = playerRenderers[i].material.color;
+        InvokeRepeating("RandomizeControls", controlsRandomizeInterval, controlsRandomizeInterval);
     }
 
     // Update is called once per frame
@@ -38,7 +49,25 @@ public class PlayerController : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
-        playerRb.velocity = new Vector3(horizontalInput * speed, playerRb.velocity.y, verticalInput * speed);
+        playerRb.velocity = new Vector3(horizontalInput * horizontalMultiplier * speed, playerRb.velocity.y, verticalInput * verticalMultiplier * speed);
+    }
+
+    // Randomly inverts one or both control axes for 1 second
+    void RandomizeControls()
+    {
+        horizontalMultiplier = Random.value > 0.5f ? -1 : 1;
+        verticalMultiplier = Random.value > 0.5f ? -1 : 1;
+        foreach (Renderer r in playerRenderers)
+            r.material.color = Color.red;
+        Invoke("ResetControls", 1.0f);
+    }
+
+    void ResetControls()
+    {
+        horizontalMultiplier = 1;
+        verticalMultiplier = 1;
+        for (int i = 0; i < playerRenderers.Length; i++)
+            playerRenderers[i].material.color = originalColors[i];
     }
 
     // Constrains player movement 
