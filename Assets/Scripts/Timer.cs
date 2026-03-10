@@ -7,6 +7,7 @@ public class Timer : MonoBehaviour
 {
     [SerializeField] private float timeLeft;
     [SerializeField] private bool timerOn = false;
+    private bool isFlashing = false;
 
     public TextMeshProUGUI timerText;
     public GameManager gameManager;
@@ -28,7 +29,8 @@ public class Timer : MonoBehaviour
             if (timeLeft > 0)
             {
                 timeLeft -= Time.deltaTime;
-                updateTimer(timeLeft);
+                if (!isFlashing)
+                    updateTimer(timeLeft);
             }
             else
             {
@@ -40,8 +42,23 @@ public class Timer : MonoBehaviour
         }
     }
 
+    public void AddTime(float amount)
+    {
+        timeLeft += amount;
+        StartCoroutine(FlashTimerText());
+    }
+
     void updateTimer(float currentTime)
     {
         timerText.text = "Time: " + Mathf.CeilToInt(currentTime);
+    }
+
+    IEnumerator FlashTimerText()
+    {
+        isFlashing = true;
+        timerText.text = "Time: <color=yellow>" + Mathf.CeilToInt(timeLeft) + "</color>";
+        yield return new WaitForSeconds(0.3f);
+        isFlashing = false;
+        timerText.text = "Time: " + Mathf.CeilToInt(timeLeft);
     }
 }

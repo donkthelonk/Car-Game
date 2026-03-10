@@ -143,6 +143,7 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(other.gameObject);
             gameManager.RestoreHealth();
+            gameManager.AddTime(5f);
         }
     }
 

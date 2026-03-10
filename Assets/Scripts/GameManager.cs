@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI finalScoreText;
     public TextMeshProUGUI healthText;
     public GameObject gameOverScreen;
+    public Timer timer;
 
     [SerializeField] private int maxHealth = 3;
 
@@ -59,6 +60,12 @@ public class GameManager : MonoBehaviour
         healthText.text = "Health: <color=red>" + health + "</color>";
         yield return new WaitForSeconds(0.3f);
         healthText.text = "Health: " + health;
+    }
+
+    // Method to add time to the timer
+    public void AddTime(float amount)
+    {
+        timer.AddTime(amount);
     }
 
     // Method to restore health by 1 up to maxHealth
