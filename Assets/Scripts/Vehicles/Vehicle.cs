@@ -6,12 +6,19 @@ using UnityEngine;
 abstract class Vehicle : MonoBehaviour
 {
     protected AudioSource vehicleAudio;
+    protected GameManager gameManager;
 
     public AudioClip honkClip;
     public GameObject explosionPrefab;
+    [SerializeField] protected int pointValue = 10;
 
     // ABSTRACTION abstract function
     protected abstract void Quirk();
+
+    void Awake()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +48,7 @@ abstract class Vehicle : MonoBehaviour
     protected void Explode()
     {
         Instantiate(explosionPrefab, transform.position, explosionPrefab.transform.rotation);
+        gameManager.UpdateScore(pointValue);
         Destroy(gameObject);
     }
 
