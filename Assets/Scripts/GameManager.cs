@@ -48,9 +48,17 @@ public class GameManager : MonoBehaviour
     {
         health -= amount;
         healthText.text = "Health: " + health;
+        StartCoroutine(FlashHealthText());
 
         if (health <= 0)
             EndGame();
+    }
+
+    IEnumerator FlashHealthText()
+    {
+        healthText.text = "Health: <color=red>" + health + "</color>";
+        yield return new WaitForSeconds(0.3f);
+        healthText.text = "Health: " + health;
     }
 
     // Method to restore health by 1 up to maxHealth
