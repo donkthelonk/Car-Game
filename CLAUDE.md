@@ -38,6 +38,7 @@ Assets/Scripts/
 ├── MoveDown.cs         # Moves any object toward negative Z and destroys it off-screen
 ├── RepeatStreet.cs     # Scrolls the road mesh and resets it to create an infinite loop
 ├── Powerup.cs          # Rotates the powerup object as it moves down
+├── FloatingText.cs     # Animates a world-space TMP text that scales up, fades out, and rises
 ├── Crate.cs            # Explodes and destroys itself on player collision
 ├── RotateWheelsX.cs    # Rotates a wheel transform on the X-axis
 ├── RotateWheelsZ.cs    # Rotates a wheel transform on the Z-axis
@@ -46,7 +47,7 @@ Assets/Scripts/
 
 ### Key Design Patterns
 
-**Vehicle inheritance hierarchy**: `Vehicle` (abstract MonoBehaviour) → `Car`, `Truck`, `Bus`. The base class defines `Honk()` as virtual. On player collision, all vehicles call `Honk()` and `Explode()` (both defined in Vehicle). `Explode()` awards `pointValue` points, instantiates the explosion prefab, and destroys the GameObject. Honking uses `AudioSource.PlayClipAtPoint()` so the sound plays after the GameObject is destroyed. Each vehicle prefab must have `honkClip` and `explosionPrefab` assigned in the Inspector — no AudioSource component needed. `gameManager` is found in `Awake()` to ensure it's available before any collision fires.
+**Vehicle inheritance hierarchy**: `Vehicle` (abstract MonoBehaviour) → `Car`, `Truck`, `Bus`. The base class defines `Honk()` as virtual. On player collision, all vehicles call `Honk()` and `Explode()` (both defined in Vehicle). `Explode()` instantiates the explosion prefab, spawns a `FloatingText` showing the points awarded, calls `gameManager.UpdateScore(pointValue)`, and destroys the GameObject. Honking uses `AudioSource.PlayClipAtPoint()` so the sound plays after the GameObject is destroyed. Each vehicle prefab must have `honkClip`, `explosionPrefab`, and `floatingTextPrefab` assigned in the Inspector. `gameManager` is found in `Awake()` to ensure it's available before any collision fires.
 
 **Per-vehicle damage**: `Vehicle` has a public `damageAmount` field (default 1). `Truck` sets it to 2 and `Bus` sets it to 3 in `Start()`. `PlayerController` reads `damageAmount` from the colliding vehicle and passes it to `GameManager.TakeDamage(int amount)`.
 
@@ -70,7 +71,9 @@ Assets/Scripts/
 
 **MoveDown.cs** is a reusable component attached to traffic vehicles, powerups, and crates to push them toward the camera (negative Z) and clean them up when they pass `zDestroy`.
 
-**Scoring** comes from two sources: `SpawnManager` calls `gameManager.UpdateScore(5)` each time traffic spawns (every `trafficSpawnTime/2` seconds, default 0.5s); and `Vehicle.Explode()` calls `gameManager.UpdateScore(pointValue)` (default 10) when the player collides with a vehicle. No vehicle subclass overrides `pointValue`, so all vehicles award 10 on collision.
+**Scoring** comes from two sources: `SpawnManager` calls `gameManager.UpdateScore(5)` each time traffic spawns (every `trafficSpawnTime/2` seconds, default 0.5s); and `Vehicle.Explode()` calls `gameManager.UpdateScore(pointValue)` when the player collides with a vehicle. Point values: Car = 10 (base default), Truck = 20, Bus = 30.
+
+**FloatingText**: spawned by `Vehicle.Explode()` at the collision position. Uses a world-space `TextMeshPro` component. `SetText(string)` sets the label and starts the animation coroutine — scales from `startSize` to `endSize`, fades alpha 1→0, and rises along Y over `duration` seconds, always facing the camera. The prefab must have a `TextMeshPro` component and the `FloatingText` script attached.
 
 
 ### Coordinate convention
