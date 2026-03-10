@@ -38,8 +38,7 @@ public class PlayerController : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
-        playerRb.AddForce(Vector3.forward * speed * verticalInput, ForceMode.Impulse);
-        playerRb.AddForce(Vector3.right * speed * horizontalInput, ForceMode.Impulse);
+        playerRb.velocity = new Vector3(horizontalInput * speed, playerRb.velocity.y, verticalInput * speed);
     }
 
     // Constrains player movement 
