@@ -11,6 +11,7 @@ abstract class Vehicle : MonoBehaviour
     public AudioClip honkClip;
     public GameObject explosionPrefab;
     [SerializeField] protected int pointValue = 10;
+    public int damageAmount = 1;
 
 void Awake()
     {

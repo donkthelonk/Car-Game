@@ -83,7 +83,8 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Player has collided with traffic.");
             isInvincible = true;
-            gameManager.TakeDamage();
+            Vehicle vehicle = collision.gameObject.GetComponent<Vehicle>();
+            gameManager.TakeDamage(vehicle != null ? vehicle.damageAmount : 1);
             Invoke("ResetInvincibility", 0.5f);
         }
         else if (collision.gameObject.CompareTag("Crate"))

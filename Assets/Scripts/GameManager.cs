@@ -43,10 +43,10 @@ public class GameManager : MonoBehaviour
         healthText.text = "Health: " + health;
     }
 
-    // Method to decrease health by 1 and end the game if health reaches 0
-    public void TakeDamage()
+    // Method to decrease health and end the game if health reaches 0
+    public void TakeDamage(int amount)
     {
-        health -= 1;
+        health -= amount;
         healthText.text = "Health: " + health;
 
         if (health <= 0)
