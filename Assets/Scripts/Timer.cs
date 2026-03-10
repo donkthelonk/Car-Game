@@ -56,7 +56,7 @@ public class Timer : MonoBehaviour
     IEnumerator FlashTimerText()
     {
         isFlashing = true;
-        timerText.text = "Time: <color=yellow>" + Mathf.CeilToInt(timeLeft) + "</color>";
+        timerText.text = "Time: <color=yellow><size=125%>" + Mathf.CeilToInt(timeLeft) + "</size></color>";
         yield return new WaitForSeconds(0.3f);
         isFlashing = false;
         timerText.text = "Time: " + Mathf.CeilToInt(timeLeft);

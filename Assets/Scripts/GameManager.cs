@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator FlashHealthText()
     {
-        healthText.text = "Health: <color=red>" + health + "</color>";
+        healthText.text = "Health: <color=red><size=125%>" + health + "</size></color>";
         yield return new WaitForSeconds(0.3f);
         healthText.text = "Health: " + health;
     }
@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator FlashScoreText()
     {
-        scoreText.text = "Score: <color=green>" + score + "</color>";
+        scoreText.text = "Score: <color=green><size=125%>" + score + "</size></color>";
         yield return new WaitForSeconds(0.3f);
         scoreText.text = "Score: " + score;
     }
