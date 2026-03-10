@@ -50,7 +50,9 @@ Assets/Scripts/
 
 **Per-vehicle damage**: `Vehicle` has a public `damageAmount` field (default 1). `Truck` sets it to 2 and `Bus` sets it to 3 in `Start()`. `PlayerController` reads `damageAmount` from the colliding vehicle and passes it to `GameManager.TakeDamage(int amount)`.
 
-**GameManager** is the central game state manager. It tracks score (`UpdateScore()`), health (`TakeDamage()` / `RestoreHealth()`), and handles game over (`EndGame()` freezes time via `Time.timeScale = 0` and shows the game over screen) and restart (`RestartGame()` resets `Time.timeScale` and reloads the scene). It holds references to score, health, and final score TextMeshPro objects, plus the game over screen panel.
+**GameManager** is the central game state manager. It tracks score (`UpdateScore()`), health (`TakeDamage()` / `RestoreHealth()`), and handles game over (`EndGame()` freezes time via `Time.timeScale = 0` and shows the game over screen) and restart (`RestartGame()` resets `Time.timeScale` and reloads the scene). It holds references to score, health, final score, and high score TextMeshPro objects, plus the game over screen panel.
+
+**High score**: persisted across sessions via `PlayerPrefs` (key: `"HighScore"`). Updated in `EndGame()` if the current score exceeds the stored value. Displayed on the game over screen as `"High Score: N"`.
 
 **Damage deduplication**: `PlayerController` uses an `isInvincible` flag with a 0.5s `Invoke` cooldown to prevent multiple colliders on the player (e.g. wheels) from triggering `TakeDamage()` more than once per hit.
 
