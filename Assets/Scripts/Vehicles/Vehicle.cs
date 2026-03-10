@@ -24,7 +24,6 @@ void Awake()
         vehicleAudio = GetComponent<AudioSource>();
 
         Move();
-        ChangeLanes();
     }
 
     // Update is called once per frame
@@ -50,13 +49,7 @@ void Awake()
         Destroy(gameObject);
     }
 
-    // POLYMORPHISM virtual function 
-    protected virtual void ChangeLanes()
-    {
-        Debug.Log("Vehicle ChangeLanes() called!");
-    }
-
-    // POLYMORPHISM virtual function 
+    // POLYMORPHISM virtual function
     protected virtual void Honk()
     {
         Debug.Log("Vehicle Honk() called!");

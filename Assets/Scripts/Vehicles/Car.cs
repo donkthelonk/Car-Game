@@ -22,15 +22,6 @@ class Car : Vehicle
 private void Start()
     {
         vehicleAudio = GetComponent<AudioSource>();
-
-        ChangeLanes();
-    }
-
-// POLYMORPHISM function override
-    protected override void ChangeLanes()
-    {
-        Debug.Log("Car ChangeLanes() called!");
-        base.ChangeLanes();
     }
 
     // POLYMORPHISM function override

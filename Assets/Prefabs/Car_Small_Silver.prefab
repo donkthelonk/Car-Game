@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6977198942250862934}
   - component: {fileID: 6977198942250862930}
   - component: {fileID: 6977198942250862928}
+  - component: {fileID: -8019015603982267072}
   m_Layer: 0
   m_Name: Car_Small_Silver
   m_TagString: Traffic
@@ -130,6 +131,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 250
   zDestroy: -10
+--- !u!114 &-8019015603982267072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6977198942250862937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5475bcefcc727ff4c9df34a8e5d8aec6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  honkClip: {fileID: 8300000, guid: 52e97601239eb8f4b80aad90a71c63a6, type: 3}
+  explosionPrefab: {fileID: 5396481438871913881, guid: 2bf89a24d08befb4da2a4e4bb9d5e2aa, type: 3}
 --- !u!1001 &8263213188128002601
 PrefabInstance:
   m_ObjectHideFlags: 0
