@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI highScoreText;
     public GameObject gameOverScreen;
     public Timer timer;
+    public PowerupText powerupText;
 
     private const string HighScoreKey = "HighScore";
 
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
 
     private int score;
     private int health;
+    private int scoreMultiplier = 1;
     private float scoreValueFontSize;
     private float healthValueFontSize;
 
@@ -84,10 +86,30 @@ public class GameManager : MonoBehaviour
         healthValueText.text = health.ToString();
     }
 
+    // Method to show powerup pickup text
+    public void ShowPowerupText(string message, Color color)
+    {
+        if (powerupText != null)
+            powerupText.Show(message, color);
+    }
+
+    // Method to activate a score multiplier for a duration
+    public void ActivateScoreMultiplier(int multiplier, float duration)
+    {
+        scoreMultiplier = multiplier;
+        StartCoroutine(ResetScoreMultiplier(duration));
+    }
+
+    IEnumerator ResetScoreMultiplier(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        scoreMultiplier = 1;
+    }
+
     // Method to Update the score and display the updated score
     public void UpdateScore(int scoreToAdd)
     {
-        score += scoreToAdd;
+        score += scoreToAdd * scoreMultiplier;
         scoreValueText.text = score.ToString();
         if (scoreToAdd > 0)
             StartCoroutine(FlashScoreText());

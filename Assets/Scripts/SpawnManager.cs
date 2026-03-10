@@ -6,7 +6,7 @@ public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private bool spawnTraffic = true;
     public GameObject[] traffic;
-    public GameObject powerup;
+    public GameObject[] powerups;
     public GameObject crate;
     public GameManager gameManager;
 
@@ -73,8 +73,9 @@ public class SpawnManager : MonoBehaviour
         // Create vector3 for spawnPos
         Vector3 spawnPos = new Vector3(randomX, yPowerupSpawn, zPowerupSpawn);
 
-        // Spawn powerup at top of screen
-        Instantiate(powerup, spawnPos, powerup.transform.rotation);
+        // Spawn random powerup at top of screen
+        GameObject randomPowerup = powerups[Random.Range(0, powerups.Length)];
+        Instantiate(randomPowerup, spawnPos, randomPowerup.transform.rotation);
     }
 
     // Spawn crate at top of screen
@@ -87,6 +88,6 @@ public class SpawnManager : MonoBehaviour
         Vector3 spawnPos = new Vector3(randomX, yCrateSpawn, zCrateSpawn);
 
         // Spawn crate at top of screen
-        Instantiate(crate, spawnPos, powerup.transform.rotation);
+        Instantiate(crate, spawnPos, crate.transform.rotation);
     }
 }

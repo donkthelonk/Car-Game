@@ -5,7 +5,7 @@ using UnityEngine;
 public class Crate : MonoBehaviour
 {
     public GameObject explosionPrefab;
-    public GameObject powerupPrefab;
+    public GameObject[] powerupPrefabs;
 
     [SerializeField] [Range(0f, 1f)] private float powerupDropChance = 0.5f;
 
@@ -15,10 +15,11 @@ public class Crate : MonoBehaviour
         {
             Instantiate(explosionPrefab, transform.position, explosionPrefab.transform.rotation);
 
-            if (powerupPrefab != null && Random.value < powerupDropChance)
+            if (powerupPrefabs.Length > 0 && Random.value < powerupDropChance)
             {
                 Debug.Log("Crate dropped a powerup!");
-                Instantiate(powerupPrefab, transform.position, powerupPrefab.transform.rotation);
+                GameObject randomPowerup = powerupPrefabs[Random.Range(0, powerupPrefabs.Length)];
+                Instantiate(randomPowerup, transform.position, randomPowerup.transform.rotation);
             }
 
             Destroy(gameObject);

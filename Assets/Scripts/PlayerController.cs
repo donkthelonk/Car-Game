@@ -138,14 +138,36 @@ public class PlayerController : MonoBehaviour
         isInvincible = false;
     }
 
+    public void ActivateInvincibility(float duration)
+    {
+        isInvincible = true;
+        CancelInvoke("ResetInvincibility");
+        Invoke("ResetInvincibility", duration);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        // Destroy Powerup and apply bonus
         if (other.gameObject.CompareTag("Powerup"))
         {
+            Powerup powerup = other.gameObject.GetComponent<Powerup>();
             Destroy(other.gameObject);
-            gameManager.RestoreHealth();
-            gameManager.AddTime(5f);
+
+            switch (powerup != null ? powerup.type : PowerupType.Health)
+            {
+                case PowerupType.Health:
+                    gameManager.RestoreHealth();
+                    gameManager.AddTime(5f);
+                    gameManager.ShowPowerupText("+Health  +5s", Color.green);
+                    break;
+                case PowerupType.Invincibility:
+                    ActivateInvincibility(3f);
+                    gameManager.ShowPowerupText("Invincible!", Color.blue);
+                    break;
+                case PowerupType.ScoreMultiplier:
+                    gameManager.ActivateScoreMultiplier(2, 10f);
+                    gameManager.ShowPowerupText("2x Score!", Color.red);
+                    break;
+            }
         }
     }
 
