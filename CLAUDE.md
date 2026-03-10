@@ -57,7 +57,9 @@ Assets/Scripts/
 
 **Damage deduplication**: `PlayerController` uses an `isInvincible` flag with a 0.5s `Invoke` cooldown to prevent multiple colliders on the player (e.g. wheels) from triggering `TakeDamage()` more than once per hit.
 
-**Powerup**: collected via `OnTriggerEnter` on the player (requires the powerup collider to be set as a trigger). Calls `GameManager.RestoreHealth()` (adds 1 health up to `maxHealth`) and `GameManager.AddTime(5f)` (adds 5 seconds to the timer). `GameManager.AddTime()` delegates to `Timer.AddTime()`, which increments `timeLeft` and triggers a yellow flash on `timerValueText`.
+**Powerup**: collected via `OnTriggerEnter` on the player (requires the powerup collider to be set as a trigger). Calls `GameManager.RestoreHealth()` (adds 1 health up to `maxHealth`) and `GameManager.AddTime(5f)` (adds 5 seconds to the timer). `GameManager.AddTime()` delegates to `Timer.AddTime()`, which increments `timeLeft` and triggers a yellow flash on `timerValueText`. Powerups can also be dropped by crates on destruction.
+
+**Crate**: on player collision, instantiates the explosion prefab and destroys itself. Has a `powerupDropChance` (0–1, default 0.5) — if the roll succeeds and `powerupPrefab` is assigned, spawns a powerup at the crate's position. Logs `"Crate dropped a powerup!"` to the console when this occurs.
 
 **Timer**: `AddTime(float amount)` adds time and flashes the timer number yellow using an `isFlashing` flag to prevent `Update` from overwriting the flash color mid-coroutine.
 
@@ -68,6 +70,8 @@ Assets/Scripts/
 **Player tilt**: `TiltPlayer()` runs each `FixedUpdate` and lerps the player's Y rotation toward `horizontalInput * tiltAngle` to simulate turning. Snaps back to 0 when input is released.
 
 **Tags in use**: `"Player"`, `"Traffic"`, `"Powerup"`, `"Crate"` — these must match GameObject tag assignments in the Unity Editor.
+
+**SpawnManager** has a `spawnTraffic` bool toggle (Inspector checkbox, default true) to disable traffic spawning during testing.
 
 **MoveDown.cs** is a reusable component attached to traffic vehicles, powerups, and crates to push them toward the camera (negative Z) and clean them up when they pass `zDestroy`.
 
