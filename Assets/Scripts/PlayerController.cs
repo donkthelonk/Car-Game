@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float tiltAngle = 15f;
     [SerializeField] private float tiltSpeed = 5f;
+    [SerializeField] private float tiltReturnSpeed = 15f;
 
     [SerializeField] private float controlsRandomizeInterval = 5.0f;
     public TextMeshProUGUI scrambledText;
@@ -108,7 +109,8 @@ public class PlayerController : MonoBehaviour
     void TiltPlayer()
     {
         Quaternion targetRotation = Quaternion.Euler(0, horizontalInput * tiltAngle, 0);
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * tiltSpeed);
+        float speed = Mathf.Abs(horizontalInput) < 0.01f ? tiltReturnSpeed : tiltSpeed;
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * speed);
     }
 
     // Constrains player movement
