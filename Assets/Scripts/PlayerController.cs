@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float tiltSpeed = 5f;
 
     [SerializeField] private float controlsRandomizeInterval = 5.0f;
+    public TextMeshProUGUI scrambledText;
     private int horizontalMultiplier = 1;
     private int verticalMultiplier = 1;
 
@@ -65,6 +67,7 @@ public class PlayerController : MonoBehaviour
         verticalMultiplier = Random.value > 0.5f ? -1 : 1;
         foreach (Renderer r in playerRenderers)
             r.material.color = Color.red;
+        scrambledText.gameObject.SetActive(true);
         Invoke("ResetControls", 1.0f);
     }
 
@@ -74,6 +77,7 @@ public class PlayerController : MonoBehaviour
         verticalMultiplier = 1;
         for (int i = 0; i < playerRenderers.Length; i++)
             playerRenderers[i].material.color = originalColors[i];
+        scrambledText.gameObject.SetActive(false);
     }
 
     // Tilts player left/right based on horizontal input
