@@ -65,11 +65,25 @@ public class PlayerController : MonoBehaviour
     {
         horizontalMultiplier = Random.value > 0.5f ? -1 : 1;
         verticalMultiplier = Random.value > 0.5f ? -1 : 1;
-        foreach (Renderer r in playerRenderers)
-            r.material.color = Color.red;
         scrambledText.gameObject.SetActive(true);
         StartCoroutine(RainbowText());
+        StartCoroutine(RainbowPlayer());
         Invoke("ResetControls", 1.0f);
+    }
+
+    IEnumerator RainbowPlayer()
+    {
+        float hue = 0f;
+        while (scrambledText.gameObject.activeSelf)
+        {
+            hue = (hue + Time.deltaTime * 2f) % 1f;
+            Color rainbow = Color.HSVToRGB(hue, 1f, 1f);
+            foreach (Renderer r in playerRenderers)
+                r.material.color = rainbow;
+            yield return null;
+        }
+        for (int i = 0; i < playerRenderers.Length; i++)
+            playerRenderers[i].material.color = originalColors[i];
     }
 
     IEnumerator RainbowText()
@@ -87,8 +101,6 @@ public class PlayerController : MonoBehaviour
     {
         horizontalMultiplier = 1;
         verticalMultiplier = 1;
-        for (int i = 0; i < playerRenderers.Length; i++)
-            playerRenderers[i].material.color = originalColors[i];
         scrambledText.gameObject.SetActive(false);
     }
 
