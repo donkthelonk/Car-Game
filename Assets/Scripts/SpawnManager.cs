@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    [SerializeField] private bool spawnTraffic = true;
     public GameObject[] traffic;
     public GameObject powerup;
     public GameObject crate;
@@ -45,6 +46,8 @@ public class SpawnManager : MonoBehaviour
     // Spawn random traffic at top of screen
     void SpawnRandomTraffic()
     {
+        if (!spawnTraffic) return;
+
         // Create random spawnPos x value
         float randomX = Random.Range(-xSpawnRange, xSpawnRange);
 
