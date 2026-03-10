@@ -53,6 +53,13 @@ public class GameManager : MonoBehaviour
             EndGame();
     }
 
+    // Method to restore health by 1 up to maxHealth
+    public void RestoreHealth()
+    {
+        health = Mathf.Min(health + 1, maxHealth);
+        healthText.text = "Health: " + health;
+    }
+
     // Method to Update the score and display the updated score
     public void UpdateScore(int scoreToAdd)
     {

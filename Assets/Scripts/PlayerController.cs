@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody playerRb;
     private GameManager gameManager;
+    private bool isInvincible = false;
 
     [SerializeField] private float xRange = 15;
     [SerializeField] private float zMax = 10;
@@ -61,25 +62,29 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void ResetInvincibility()
+    {
+        isInvincible = false;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         // Destroy Powerup and apply bonus
         if (other.gameObject.CompareTag("Powerup"))
         {
-            // Destroy powerup
             Destroy(other.gameObject);
-
-            // Apply bonus
-            Debug.Log("Player has gotten a powerup.");
+            gameManager.RestoreHealth();
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Traffic"))
+        if (collision.gameObject.CompareTag("Traffic") && !isInvincible)
         {
             Debug.Log("Player has collided with traffic.");
+            isInvincible = true;
             gameManager.TakeDamage();
+            Invoke("ResetInvincibility", 0.5f);
         }
         else if (collision.gameObject.CompareTag("Crate"))
         {
