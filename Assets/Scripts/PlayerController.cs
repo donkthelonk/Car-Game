@@ -68,7 +68,19 @@ public class PlayerController : MonoBehaviour
         foreach (Renderer r in playerRenderers)
             r.material.color = Color.red;
         scrambledText.gameObject.SetActive(true);
+        StartCoroutine(RainbowText());
         Invoke("ResetControls", 1.0f);
+    }
+
+    IEnumerator RainbowText()
+    {
+        float hue = 0f;
+        while (scrambledText.gameObject.activeSelf)
+        {
+            hue = (hue + Time.deltaTime * 2f) % 1f;
+            scrambledText.color = Color.HSVToRGB(hue, 1f, 1f);
+            yield return null;
+        }
     }
 
     void ResetControls()
