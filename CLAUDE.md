@@ -33,12 +33,12 @@ Assets/Scripts/
 │   └── Bus.cs          # Derived: launches upward on player collision
 ├── PlayerController.cs # Physics-based player movement (Rigidbody, FixedUpdate)
 ├── SpawnManager.cs     # InvokeRepeating spawner for traffic, powerups, crates
-├── GameManager.cs      # Score tracking + TextMeshPro display
-├── Timer.cs            # Countdown timer with TextMeshPro display
+├── GameManager.cs      # Score, health, game over screen, and restart logic
+├── Timer.cs            # Countdown timer; calls GameManager.EndGame() at zero
 ├── MoveDown.cs         # Moves any object toward negative Z and destroys it off-screen
 ├── RepeatStreet.cs     # Scrolls the road mesh and resets it to create an infinite loop
 ├── Powerup.cs          # Rotates the powerup object as it moves down
-├── Crate.cs            # Placeholder (stub, no behavior yet)
+├── Crate.cs            # Explodes and destroys itself on player collision
 ├── RotateWheelsX.cs    # Rotates a wheel transform on the X-axis
 ├── RotateWheelsZ.cs    # Rotates a wheel transform on the Z-axis
 └── OLD/                # Archived pre-inheritance scripts (ignore)
@@ -46,7 +46,9 @@ Assets/Scripts/
 
 ### Key Design Patterns
 
-**Vehicle inheritance hierarchy**: `Vehicle` (abstract MonoBehaviour) → `Car`, `Truck`, `Bus`. The base class defines `Quirk()` as abstract and `Honk()` / `ChangeLanes()` as virtual. Each derived class sets `isQuirky = true` in `OnCollisionEnter` when tagged "Player", then calls `Quirk()` each `Update()`.
+**Vehicle inheritance hierarchy**: `Vehicle` (abstract MonoBehaviour) → `Car`, `Truck`, `Bus`. The base class defines `Quirk()` as abstract and `Honk()` / `ChangeLanes()` as virtual. Each derived class sets `isQuirky = true` in `OnCollisionEnter` when tagged "Player", then calls `Quirk()` each `Update()`. On player collision, all vehicles also call `Explode()` (defined in Vehicle) which instantiates an explosion prefab and destroys the GameObject. Honking uses `AudioSource.PlayClipAtPoint()` so the sound plays after the GameObject is destroyed. Each vehicle prefab must have `honkClip` and `explosionPrefab` assigned in the Inspector — no AudioSource component needed.
+
+**GameManager** is the central game state manager. It tracks score (`UpdateScore()`), health (`TakeDamage()`), and handles game over (`EndGame()` freezes time via `Time.timeScale = 0` and shows the game over screen) and restart (`RestartGame()` resets `Time.timeScale` and reloads the scene). It holds references to score, health, and final score TextMeshPro objects, plus the game over screen panel.
 
 **Tags in use**: `"Player"`, `"Traffic"`, `"Powerup"`, `"Crate"` — these must match GameObject tag assignments in the Unity Editor.
 
@@ -54,7 +56,6 @@ Assets/Scripts/
 
 **SpawnManager** calls `gameManager.UpdateScore(5)` every time traffic spawns — score is purely traffic-volume based (not survival time).
 
-**Timer.cs** counts down from a `[SerializeField] float timeLeft` set in the Inspector; it does not currently interact with game-over logic.
 
 ### Coordinate convention
 
