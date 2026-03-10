@@ -5,8 +5,6 @@ using UnityEngine;
 // INHERITANCE derived class
 class Car : Vehicle
 {
-    private bool isQuirky = false;
-
     private int number = 0;
 
     // ENCAPSULATION private variable setter
@@ -21,32 +19,14 @@ class Car : Vehicle
         return number;
     }
 
-    // ABSTRACTION function override
-    protected override void Quirk()
-    {
-        Debug.Log("Car Quirk() called!");
-
-        int rotationSpeed = 1000;
-
-        transform.Rotate(new Vector3(0, Time.deltaTime * rotationSpeed, 0));
-    }
-
-    private void Start()
+private void Start()
     {
         vehicleAudio = GetComponent<AudioSource>();
 
         ChangeLanes();
     }
 
-    private void Update()
-    {
-        if (isQuirky)
-        {
-            Quirk();
-        }
-    }
-
-    // POLYMORPHISM function override
+// POLYMORPHISM function override
     protected override void ChangeLanes()
     {
         Debug.Log("Car ChangeLanes() called!");
@@ -65,7 +45,6 @@ class Car : Vehicle
         // when Vehicle collides with the player object
         if (collision.gameObject.CompareTag("Player"))
         {
-            isQuirky = true;
             Honk();
             Explode();
         }

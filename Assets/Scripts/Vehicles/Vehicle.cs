@@ -12,10 +12,7 @@ abstract class Vehicle : MonoBehaviour
     public GameObject explosionPrefab;
     [SerializeField] protected int pointValue = 10;
 
-    // ABSTRACTION abstract function
-    protected abstract void Quirk();
-
-    void Awake()
+void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
     }
