@@ -58,7 +58,7 @@ Assets/Scripts/
 
 **Timer**: `AddTime(float amount)` adds time and flashes the timer number yellow using an `isFlashing` flag to prevent `Update` from overwriting the flash color mid-coroutine.
 
-**UI number flashes**: score number flashes green on increase, health number flashes red on damage, timer number flashes yellow when time is added — all use TMP rich text `<color>` tags on just the number portion.
+**UI number flashes**: score number flashes green on increase, health number flashes red on damage, timer number flashes yellow when time is added — all use TMP rich text `<color>` and `<size=110%>` tags on just the number value. Each stat uses two separate TMP objects: a static label (e.g. `"Score: "`) and a dynamic value (e.g. `"0"`). Code only updates the value object (`scoreValueText`, `healthValueText`, `timerValueText`) so the label never shifts when the number resizes.
 
 **Randomized controls**: every `controlsRandomizeInterval` seconds (default 5), horizontal and vertical axes are each randomly inverted for 1 second then reset. All player renderers cycle through rainbow colors and a "Controls Scrambled!" UI text appears and cycles through rainbow colors during this period.
 
