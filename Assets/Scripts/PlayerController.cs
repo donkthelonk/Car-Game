@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float zMax = 10;
     [SerializeField] private float zMin = -4;
 
+    [SerializeField] private float tiltAngle = 15f;
+    [SerializeField] private float tiltSpeed = 5f;
+
     [SerializeField] private float controlsRandomizeInterval = 5.0f;
     private int horizontalMultiplier = 1;
     private int verticalMultiplier = 1;
@@ -39,6 +42,9 @@ public class PlayerController : MonoBehaviour
     {
         // Get input from user and move player
         MovePlayer();
+
+        // Tilt player when moving horizontally
+        TiltPlayer();
 
         // Constrain movement on the z axis
         ConstrainPlayerPosition();
@@ -70,7 +76,14 @@ public class PlayerController : MonoBehaviour
             playerRenderers[i].material.color = originalColors[i];
     }
 
-    // Constrains player movement 
+    // Tilts player left/right based on horizontal input
+    void TiltPlayer()
+    {
+        Quaternion targetRotation = Quaternion.Euler(0, horizontalInput * tiltAngle, 0);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * tiltSpeed);
+    }
+
+    // Constrains player movement
     void ConstrainPlayerPosition()
     {
         if (transform.position.z > zMax)
