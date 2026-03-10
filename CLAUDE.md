@@ -54,9 +54,13 @@ Assets/Scripts/
 
 **Damage deduplication**: `PlayerController` uses an `isInvincible` flag with a 0.5s `Invoke` cooldown to prevent multiple colliders on the player (e.g. wheels) from triggering `TakeDamage()` more than once per hit.
 
-**Powerup**: collected via `OnTriggerEnter` on the player (requires the powerup collider to be set as a trigger). Calls `GameManager.RestoreHealth()` which adds 1 health up to `maxHealth`.
+**Powerup**: collected via `OnTriggerEnter` on the player (requires the powerup collider to be set as a trigger). Calls `GameManager.RestoreHealth()` (adds 1 health up to `maxHealth`) and `GameManager.AddTime(5f)` (adds 5 seconds to the timer).
 
-**Randomized controls**: every `controlsRandomizeInterval` seconds (default 5), horizontal and vertical axes are each randomly inverted for 1 second then reset. All player renderers turn red during this period using `GetComponentsInChildren<Renderer>()`.
+**Timer**: `AddTime(float amount)` adds time and flashes the timer number yellow using an `isFlashing` flag to prevent `Update` from overwriting the flash color mid-coroutine.
+
+**UI number flashes**: score number flashes green on increase, health number flashes red on damage, timer number flashes yellow when time is added — all use TMP rich text `<color>` tags on just the number portion.
+
+**Randomized controls**: every `controlsRandomizeInterval` seconds (default 5), horizontal and vertical axes are each randomly inverted for 1 second then reset. All player renderers cycle through rainbow colors and a "Controls Scrambled!" UI text appears and cycles through rainbow colors during this period.
 
 **Player tilt**: `TiltPlayer()` runs each `FixedUpdate` and lerps the player's Y rotation toward `horizontalInput * tiltAngle` to simulate turning. Snaps back to 0 when input is released.
 
