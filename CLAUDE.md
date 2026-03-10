@@ -56,6 +56,10 @@ Assets/Scripts/
 
 **Powerup**: collected via `OnTriggerEnter` on the player (requires the powerup collider to be set as a trigger). Calls `GameManager.RestoreHealth()` which adds 1 health up to `maxHealth`.
 
+**Randomized controls**: every `controlsRandomizeInterval` seconds (default 5), horizontal and vertical axes are each randomly inverted for 1 second then reset. All player renderers turn red during this period using `GetComponentsInChildren<Renderer>()`.
+
+**Player tilt**: `TiltPlayer()` runs each `FixedUpdate` and lerps the player's Y rotation toward `horizontalInput * tiltAngle` to simulate turning. Snaps back to 0 when input is released.
+
 **Tags in use**: `"Player"`, `"Traffic"`, `"Powerup"`, `"Crate"` — these must match GameObject tag assignments in the Unity Editor.
 
 **MoveDown.cs** is a reusable component attached to traffic vehicles, powerups, and crates to push them toward the camera (negative Z) and clean them up when they pass `zDestroy`.
