@@ -12,6 +12,7 @@ class Bus : Vehicle
         vehicleAudio = GetComponent<AudioSource>();
         vehicleRb = GetComponent<Rigidbody>();
         damageAmount = 3;
+        pointValue = 30;
     }
 
 private void OnCollisionEnter(Collision collision)

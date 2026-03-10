@@ -10,6 +10,7 @@ abstract class Vehicle : MonoBehaviour
 
     public AudioClip honkClip;
     public GameObject explosionPrefab;
+    public GameObject floatingTextPrefab;
     [SerializeField] protected int pointValue = 10;
     public int damageAmount = 1;
 
@@ -23,7 +24,6 @@ void Awake()
     {
         vehicleAudio = GetComponent<AudioSource>();
 
-        Move();
     }
 
     // Update is called once per frame
@@ -45,6 +45,13 @@ void Awake()
     protected void Explode()
     {
         Instantiate(explosionPrefab, transform.position, explosionPrefab.transform.rotation);
+
+        if (floatingTextPrefab != null)
+        {
+            GameObject textObj = Instantiate(floatingTextPrefab, transform.position + Vector3.up, Quaternion.identity);
+            textObj.GetComponent<FloatingText>().SetText("+" + pointValue + "pts");
+        }
+
         gameManager.UpdateScore(pointValue);
         Destroy(gameObject);
     }
@@ -58,8 +65,5 @@ void Awake()
         vehicleAudio.PlayOneShot(honkClip, 0.5f);
     }
 
-    void Move()
-    {
-        Debug.Log("Vehicle Move() called!");
-    }
+
 }

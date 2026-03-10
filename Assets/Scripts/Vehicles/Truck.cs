@@ -9,6 +9,7 @@ class Truck : Vehicle
     {
         vehicleAudio = GetComponent<AudioSource>();
         damageAmount = 2;
+        pointValue = 20;
     }
 
 private void OnCollisionEnter(Collision collision)
