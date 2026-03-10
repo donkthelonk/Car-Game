@@ -54,7 +54,7 @@ Assets/Scripts/
 
 **Damage deduplication**: `PlayerController` uses an `isInvincible` flag with a 0.5s `Invoke` cooldown to prevent multiple colliders on the player (e.g. wheels) from triggering `TakeDamage()` more than once per hit.
 
-**Powerup**: collected via `OnTriggerEnter` on the player (requires the powerup collider to be set as a trigger). Calls `GameManager.RestoreHealth()` (adds 1 health up to `maxHealth`) and `GameManager.AddTime(5f)` (adds 5 seconds to the timer).
+**Powerup**: collected via `OnTriggerEnter` on the player (requires the powerup collider to be set as a trigger). Calls `GameManager.RestoreHealth()` (adds 1 health up to `maxHealth`) and `GameManager.AddTime(5f)` (adds 5 seconds to the timer). `GameManager.AddTime()` delegates to `Timer.AddTime()`, which increments `timeLeft` and triggers a yellow flash on `timerValueText`.
 
 **Timer**: `AddTime(float amount)` adds time and flashes the timer number yellow using an `isFlashing` flag to prevent `Update` from overwriting the flash color mid-coroutine.
 
