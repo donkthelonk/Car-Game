@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 A Unity 3D endless runner / traffic dodger game. The player drives a car down a road, avoiding oncoming traffic, collecting powerups, and dodging crates. The game tracks score and a countdown timer.
 
 - **Unity version**: 2021 (based on packages)
-- **Primary scene**: `Assets/Scenes/My Game.unity`
+- **Primary scene**: `Assets/Scenes/Crappy Car.unity`
 - **All game scripts**: `Assets/Scripts/`
 
 ## Development Workflow
@@ -70,7 +70,7 @@ Assets/Scripts/
 
 **MoveDown.cs** is a reusable component attached to traffic vehicles, powerups, and crates to push them toward the camera (negative Z) and clean them up when they pass `zDestroy`.
 
-**SpawnManager** calls `gameManager.UpdateScore(5)` every time traffic spawns — score is purely traffic-volume based (not survival time).
+**Scoring** comes from two sources: `SpawnManager` calls `gameManager.UpdateScore(5)` each time traffic spawns (every `trafficSpawnTime/2` seconds, default 0.5s); and `Vehicle.Explode()` calls `gameManager.UpdateScore(pointValue)` (default 10) when the player collides with a vehicle. No vehicle subclass overrides `pointValue`, so all vehicles award 10 on collision.
 
 
 ### Coordinate convention
