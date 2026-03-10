@@ -28,9 +28,9 @@ Scripts are compiled by Unity automatically on save. The `Assembly-CSharp.csproj
 Assets/Scripts/
 ├── Vehicles/           # Vehicle class hierarchy
 │   ├── Vehicle.cs      # Abstract base class (MonoBehaviour)
-│   ├── Car.cs          # Derived: rotates on Y-axis on player collision
-│   ├── Truck.cs        # Derived: rotates on Z-axis on player collision
-│   └── Bus.cs          # Derived: launches upward on player collision
+│   ├── Car.cs          # Derived vehicle type
+│   ├── Truck.cs        # Derived vehicle type
+│   └── Bus.cs          # Derived vehicle type
 ├── PlayerController.cs # Physics-based player movement (Rigidbody, FixedUpdate)
 ├── SpawnManager.cs     # InvokeRepeating spawner for traffic, powerups, crates
 ├── GameManager.cs      # Score, health, game over screen, and restart logic
@@ -46,7 +46,7 @@ Assets/Scripts/
 
 ### Key Design Patterns
 
-**Vehicle inheritance hierarchy**: `Vehicle` (abstract MonoBehaviour) → `Car`, `Truck`, `Bus`. The base class defines `Quirk()` as abstract and `Honk()` / `ChangeLanes()` as virtual. Each derived class sets `isQuirky = true` in `OnCollisionEnter` when tagged "Player", then calls `Quirk()` each `Update()`. On player collision, all vehicles also call `Explode()` (defined in Vehicle) which instantiates an explosion prefab and destroys the GameObject. Honking uses `AudioSource.PlayClipAtPoint()` so the sound plays after the GameObject is destroyed. Each vehicle prefab must have `honkClip` and `explosionPrefab` assigned in the Inspector — no AudioSource component needed.
+**Vehicle inheritance hierarchy**: `Vehicle` (abstract MonoBehaviour) → `Car`, `Truck`, `Bus`. The base class defines `Honk()` / `ChangeLanes()` as virtual. On player collision, all vehicles call `Honk()` and `Explode()` (both defined in Vehicle). `Explode()` awards `pointValue` points, instantiates the explosion prefab, and destroys the GameObject. Honking uses `AudioSource.PlayClipAtPoint()` so the sound plays after the GameObject is destroyed. Each vehicle prefab must have `honkClip` and `explosionPrefab` assigned in the Inspector — no AudioSource component needed. `gameManager` is found in `Awake()` to ensure it's available before any collision fires.
 
 **GameManager** is the central game state manager. It tracks score (`UpdateScore()`), health (`TakeDamage()` / `RestoreHealth()`), and handles game over (`EndGame()` freezes time via `Time.timeScale = 0` and shows the game over screen) and restart (`RestartGame()` resets `Time.timeScale` and reloads the scene). It holds references to score, health, and final score TextMeshPro objects, plus the game over screen panel.
 
