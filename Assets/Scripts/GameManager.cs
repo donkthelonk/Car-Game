@@ -9,8 +9,11 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreValueText;
     public TextMeshProUGUI healthValueText;
     public TextMeshProUGUI finalScoreText;
+    public TextMeshProUGUI highScoreText;
     public GameObject gameOverScreen;
     public Timer timer;
+
+    private const string HighScoreKey = "HighScore";
 
     [SerializeField] private int maxHealth = 3;
 
@@ -103,8 +106,12 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         Debug.Log("Game Over!");
+        int prevHighScore = PlayerPrefs.GetInt(HighScoreKey, 0);
+        if (score > prevHighScore)
+            PlayerPrefs.SetInt(HighScoreKey, score);
         gameOverScreen.SetActive(true);
         finalScoreText.text = "Score: " + score;
+        highScoreText.text = "High Score: " + PlayerPrefs.GetInt(HighScoreKey, 0);
         Time.timeScale = 0;
     }
 
