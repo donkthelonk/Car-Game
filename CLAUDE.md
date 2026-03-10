@@ -48,7 +48,11 @@ Assets/Scripts/
 
 **Vehicle inheritance hierarchy**: `Vehicle` (abstract MonoBehaviour) → `Car`, `Truck`, `Bus`. The base class defines `Quirk()` as abstract and `Honk()` / `ChangeLanes()` as virtual. Each derived class sets `isQuirky = true` in `OnCollisionEnter` when tagged "Player", then calls `Quirk()` each `Update()`. On player collision, all vehicles also call `Explode()` (defined in Vehicle) which instantiates an explosion prefab and destroys the GameObject. Honking uses `AudioSource.PlayClipAtPoint()` so the sound plays after the GameObject is destroyed. Each vehicle prefab must have `honkClip` and `explosionPrefab` assigned in the Inspector — no AudioSource component needed.
 
-**GameManager** is the central game state manager. It tracks score (`UpdateScore()`), health (`TakeDamage()`), and handles game over (`EndGame()` freezes time via `Time.timeScale = 0` and shows the game over screen) and restart (`RestartGame()` resets `Time.timeScale` and reloads the scene). It holds references to score, health, and final score TextMeshPro objects, plus the game over screen panel.
+**GameManager** is the central game state manager. It tracks score (`UpdateScore()`), health (`TakeDamage()` / `RestoreHealth()`), and handles game over (`EndGame()` freezes time via `Time.timeScale = 0` and shows the game over screen) and restart (`RestartGame()` resets `Time.timeScale` and reloads the scene). It holds references to score, health, and final score TextMeshPro objects, plus the game over screen panel.
+
+**Damage deduplication**: `PlayerController` uses an `isInvincible` flag with a 0.5s `Invoke` cooldown to prevent multiple colliders on the player (e.g. wheels) from triggering `TakeDamage()` more than once per hit.
+
+**Powerup**: collected via `OnTriggerEnter` on the player (requires the powerup collider to be set as a trigger). Calls `GameManager.RestoreHealth()` which adds 1 health up to `maxHealth`.
 
 **Tags in use**: `"Player"`, `"Traffic"`, `"Powerup"`, `"Crate"` — these must match GameObject tag assignments in the Unity Editor.
 
