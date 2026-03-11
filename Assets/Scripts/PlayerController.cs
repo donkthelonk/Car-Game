@@ -143,6 +143,32 @@ public class PlayerController : MonoBehaviour
         isInvincible = true;
         CancelInvoke("ResetInvincibility");
         Invoke("ResetInvincibility", duration);
+        StartCoroutine(BlinkPlayer(duration));
+    }
+
+    IEnumerator BlinkPlayer(float duration)
+    {
+        float elapsed = 0f;
+        bool visible = true;
+        while (elapsed < duration)
+        {
+            visible = !visible;
+            foreach (Renderer r in playerRenderers)
+                r.enabled = visible;
+            yield return new WaitForSeconds(0.1f);
+            elapsed += 0.1f;
+        }
+        foreach (Renderer r in playerRenderers)
+            r.enabled = true;
+    }
+
+    IEnumerator HitFlash()
+    {
+        foreach (Renderer r in playerRenderers)
+            r.material.color = Color.red;
+        yield return new WaitForSecondsRealtime(0.15f);
+        for (int i = 0; i < playerRenderers.Length; i++)
+            playerRenderers[i].material.color = originalColors[i];
     }
 
     private void OnTriggerEnter(Collider other)
@@ -179,6 +205,7 @@ public class PlayerController : MonoBehaviour
             isInvincible = true;
             Vehicle vehicle = collision.gameObject.GetComponent<Vehicle>();
             gameManager.TakeDamage(vehicle != null ? vehicle.damageAmount : 1);
+            StartCoroutine(HitFlash());
             Invoke("ResetInvincibility", 0.5f);
         }
         else if (collision.gameObject.CompareTag("Crate"))

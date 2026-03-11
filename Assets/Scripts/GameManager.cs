@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverScreen;
     public Timer timer;
     public PowerupText powerupText;
+    public CameraShake cameraShake;
 
     private const string HighScoreKey = "HighScore";
 
@@ -59,9 +60,19 @@ public class GameManager : MonoBehaviour
         health -= amount;
         healthValueText.text = health.ToString();
         StartCoroutine(FlashHealthText());
+        StartCoroutine(SlowMotion());
+        if (cameraShake != null) cameraShake.Shake(0.3f, 0.15f);
 
         if (health <= 0)
             EndGame();
+    }
+
+    IEnumerator SlowMotion()
+    {
+        Time.timeScale = 0.2f;
+        yield return new WaitForSecondsRealtime(0.15f);
+        if (health > 0)
+            Time.timeScale = 1f;
     }
 
     IEnumerator FlashHealthText()
