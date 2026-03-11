@@ -176,6 +176,8 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Powerup"))
         {
             Powerup powerup = other.gameObject.GetComponent<Powerup>();
+            if (powerup != null && powerup.pickupSound != null)
+                AudioSource.PlayClipAtPoint(powerup.pickupSound, other.transform.position);
             Destroy(other.gameObject);
 
             switch (powerup != null ? powerup.type : PowerupType.Health)

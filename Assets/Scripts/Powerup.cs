@@ -8,6 +8,7 @@ public class Powerup : MonoBehaviour
 {
     [SerializeField] private float rotationSpeed = 100.0f;
     public PowerupType type = PowerupType.Health;
+    public AudioClip pickupSound;
 
     void Start()
     {
