@@ -10,6 +10,7 @@ public class SpawnManager : MonoBehaviour
     public GameObject crate;
     public GameManager gameManager;
 
+    [SerializeField] private float[] lanePositions = { -6f, -2f, 2f, 6f };
     [SerializeField] private float zTrafficSpawn = 15.0f;
     [SerializeField] private float zPowerupSpawn = 15.0f;
     [SerializeField] private float zCrateSpawn = 15.0f;
@@ -48,14 +49,14 @@ public class SpawnManager : MonoBehaviour
     {
         if (!spawnTraffic) return;
 
-        // Create random spawnPos x value
-        float randomX = Random.Range(-xSpawnRange, xSpawnRange);
+        // Pick a random lane
+        float laneX = lanePositions[Random.Range(0, lanePositions.Length)];
 
         // Create random array index
         int randomIndex = Random.Range(0, traffic.Length);
 
         // Create vector3 for spawnPos
-        Vector3 spawnPos = new Vector3(randomX, yTrafficSpawn, zTrafficSpawn);
+        Vector3 spawnPos = new Vector3(laneX, yTrafficSpawn, zTrafficSpawn);
 
         // Spawn random traffic at top of screen
         Instantiate(traffic[randomIndex], spawnPos, traffic[randomIndex].gameObject.transform.rotation);

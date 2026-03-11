@@ -9,6 +9,7 @@ abstract class Vehicle : MonoBehaviour
     protected GameManager gameManager;
 
     public AudioClip honkClip;
+    public AudioClip explosionClip;
     public GameObject explosionPrefab;
     public GameObject floatingTextPrefab;
     [SerializeField] protected int pointValue = 10;
@@ -37,7 +38,6 @@ void Awake()
         // when Vehicle collides with the player object
         if(collision.gameObject.CompareTag("Player"))
         {
-            Honk();
             Explode();
         }
     }
@@ -45,6 +45,8 @@ void Awake()
     protected void Explode()
     {
         Instantiate(explosionPrefab, transform.position, explosionPrefab.transform.rotation);
+        if (explosionClip != null)
+            AudioSource.PlayClipAtPoint(explosionClip, transform.position);
 
         if (floatingTextPrefab != null)
         {
