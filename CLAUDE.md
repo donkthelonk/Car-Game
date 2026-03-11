@@ -37,8 +37,10 @@ Assets/Scripts/
 ├── Timer.cs            # Countdown timer; calls GameManager.EndGame() at zero
 ├── MoveDown.cs         # Moves any object toward negative Z and destroys it off-screen
 ├── RepeatStreet.cs     # Scrolls the road mesh and resets it to create an infinite loop
-├── Powerup.cs          # Rotates the powerup object as it moves down
+├── Powerup.cs          # Rotates the powerup object; sets color based on PowerupType enum
+├── PowerupText.cs      # Canvas UI text that flashes on powerup pickup
 ├── FloatingText.cs     # Animates a world-space TMP text that scales up, fades out, and rises
+├── CameraShake.cs      # Shakes the camera by randomizing localPosition for a duration
 ├── Crate.cs            # Explodes and destroys itself on player collision
 ├── RotateWheelsX.cs    # Rotates a wheel transform on the X-axis
 ├── RotateWheelsZ.cs    # Rotates a wheel transform on the Z-axis
@@ -57,9 +59,11 @@ Assets/Scripts/
 
 **Damage deduplication**: `PlayerController` uses an `isInvincible` flag with a 0.5s `Invoke` cooldown to prevent multiple colliders on the player (e.g. wheels) from triggering `TakeDamage()` more than once per hit.
 
-**Powerup**: collected via `OnTriggerEnter` on the player (requires the powerup collider to be set as a trigger). Calls `GameManager.RestoreHealth()` (adds 1 health up to `maxHealth`) and `GameManager.AddTime(5f)` (adds 5 seconds to the timer). `GameManager.AddTime()` delegates to `Timer.AddTime()`, which increments `timeLeft` and triggers a yellow flash on `timerValueText`. Powerups can also be dropped by crates on destruction.
+**Powerup types**: defined by the `PowerupType` enum (`Health`, `Invincibility`, `ScoreMultiplier`). Set on each prefab via the `type` field on the `Powerup` component — color is applied automatically at runtime (green/blue/red). `SpawnManager` and `Crate` both hold `GameObject[]` arrays and pick randomly. Effects on pickup: Health restores 1 HP + 5s; Invincibility sets `isInvincible` for 3s and blinks the player; ScoreMultiplier doubles score for 10s. `GameManager.ShowPowerupText()` displays a `PowerupText` flash on every pickup.
 
-**Crate**: on player collision, instantiates the explosion prefab and destroys itself. Has a `powerupDropChance` (0–1, default 0.5) — if the roll succeeds and `powerupPrefab` is assigned, spawns a powerup at the crate's position. Logs `"Crate dropped a powerup!"` to the console when this occurs.
+**Crate**: on player collision, instantiates the explosion prefab and destroys itself. Has a `powerupDropChance` (0–1, default 0.5) — rolls against `powerupPrefabs[]` array, picks a random prefab if successful. Logs `"Crate dropped a powerup!"` to the console when this occurs.
+
+**Damage feedback**: `GameManager.TakeDamage()` triggers three simultaneous effects — `CameraShake.Shake()` (0.3s, magnitude 0.15), a slow-motion dip (`Time.timeScale = 0.2f` for 0.15 real seconds via `WaitForSecondsRealtime`), and a health text flash. `PlayerController` additionally runs `HitFlash()` which turns all player renderers red for 0.15 real seconds. Slow-mo coroutine checks `health > 0` before restoring `timeScale` to avoid un-pausing on game over. `CameraShake` uses `transform.localPosition` offset from `originalPosition` captured in `Awake` and uses `Time.unscaledDeltaTime` so it works during slow-mo.
 
 **Timer**: `AddTime(float amount)` adds time and flashes the timer number yellow using an `isFlashing` flag to prevent `Update` from overwriting the flash color mid-coroutine.
 
