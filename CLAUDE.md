@@ -50,7 +50,7 @@ Assets/Scripts/
 
 ### Key Design Patterns
 
-**Vehicle inheritance hierarchy**: `Vehicle` (abstract MonoBehaviour) → `Car`, `Truck`, `Bus`. The base class defines `Honk()` as virtual and owns the single `OnCollisionEnter` — derived classes do NOT define their own, as Unity calls both base and derived `private` lifecycle methods via reflection which would cause double-firing. On player collision, `Vehicle.OnCollisionEnter` calls `Honk()` and `Explode()`. `Explode()` instantiates the explosion prefab, spawns a `FloatingText` showing the points awarded, calls `gameManager.UpdateScore(pointValue)`, adds 1 second to the timer, and destroys the GameObject. Honking uses `AudioSource.PlayClipAtPoint()` so the sound plays after the GameObject is destroyed. Each vehicle prefab must have `honkClip`, `explosionPrefab`, and `floatingTextPrefab` assigned in the Inspector. `gameManager` is found in `Awake()` to ensure it's available before any collision fires.
+**Vehicle inheritance hierarchy**: `Vehicle` (abstract MonoBehaviour) → `Car`, `Truck`, `Bus`. `Vehicle` owns the single `OnCollisionEnter` — derived classes do NOT define their own, as Unity calls both base and derived `private` lifecycle methods via reflection which would cause double-firing. On player collision, `Explode()` is called: instantiates the explosion prefab, plays `explosionClip` via `AudioSource.PlayClipAtPoint()` (no AudioSource component needed on the prefab), spawns a `FloatingText` showing points, calls `gameManager.UpdateScore(pointValue)`, adds 1 second to the timer, and destroys the GameObject. Each vehicle prefab must have `explosionClip`, `explosionPrefab`, and `floatingTextPrefab` assigned in the Inspector. `gameManager` is found in `Awake()` to ensure it's available before any collision fires.
 
 **Per-vehicle damage**: `Vehicle` has a public `damageAmount` field (default 1). `Truck` sets it to 2 and `Bus` sets it to 3 in `Start()`. `PlayerController` reads `damageAmount` from the colliding vehicle and passes it to `GameManager.TakeDamage(int amount)`.
 
@@ -76,7 +76,7 @@ Assets/Scripts/
 
 **Tags in use**: `"Player"`, `"Traffic"`, `"Powerup"`, `"Crate"` — these must match GameObject tag assignments in the Unity Editor.
 
-**SpawnManager** has a `spawnTraffic` bool toggle (Inspector checkbox, default true) to disable traffic spawning during testing.
+**SpawnManager** has a `spawnTraffic` bool toggle (Inspector checkbox, default true) to disable traffic spawning during testing. Traffic spawns in fixed lanes defined by a `float[] lanePositions` array (default: -6, -2, 2, 6) — configure in the Inspector to match road width.
 
 **MoveDown.cs** is a reusable component attached to traffic vehicles, powerups, and crates to push them toward the camera (negative Z) and clean them up when they pass `zDestroy`.
 
