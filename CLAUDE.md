@@ -41,6 +41,7 @@ Assets/Scripts/
 ├── PowerupText.cs      # Canvas UI text that flashes on powerup pickup
 ├── FloatingText.cs     # Animates a world-space TMP text that scales up, fades out, and rises
 ├── CameraShake.cs      # Shakes the camera by randomizing localPosition for a duration
+├── BackgroundMusic.cs  # Ramps AudioSource pitch based on score
 ├── Crate.cs            # Explodes and destroys itself on player collision
 ├── RotateWheelsX.cs    # Rotates a wheel transform on the X-axis
 ├── RotateWheelsZ.cs    # Rotates a wheel transform on the Z-axis
@@ -49,7 +50,7 @@ Assets/Scripts/
 
 ### Key Design Patterns
 
-**Vehicle inheritance hierarchy**: `Vehicle` (abstract MonoBehaviour) → `Car`, `Truck`, `Bus`. The base class defines `Honk()` as virtual. On player collision, all vehicles call `Honk()` and `Explode()` (both defined in Vehicle). `Explode()` instantiates the explosion prefab, spawns a `FloatingText` showing the points awarded, calls `gameManager.UpdateScore(pointValue)`, and destroys the GameObject. Honking uses `AudioSource.PlayClipAtPoint()` so the sound plays after the GameObject is destroyed. Each vehicle prefab must have `honkClip`, `explosionPrefab`, and `floatingTextPrefab` assigned in the Inspector. `gameManager` is found in `Awake()` to ensure it's available before any collision fires.
+**Vehicle inheritance hierarchy**: `Vehicle` (abstract MonoBehaviour) → `Car`, `Truck`, `Bus`. The base class defines `Honk()` as virtual and owns the single `OnCollisionEnter` — derived classes do NOT define their own, as Unity calls both base and derived `private` lifecycle methods via reflection which would cause double-firing. On player collision, `Vehicle.OnCollisionEnter` calls `Honk()` and `Explode()`. `Explode()` instantiates the explosion prefab, spawns a `FloatingText` showing the points awarded, calls `gameManager.UpdateScore(pointValue)`, adds 1 second to the timer, and destroys the GameObject. Honking uses `AudioSource.PlayClipAtPoint()` so the sound plays after the GameObject is destroyed. Each vehicle prefab must have `honkClip`, `explosionPrefab`, and `floatingTextPrefab` assigned in the Inspector. `gameManager` is found in `Awake()` to ensure it's available before any collision fires.
 
 **Per-vehicle damage**: `Vehicle` has a public `damageAmount` field (default 1). `Truck` sets it to 2 and `Bus` sets it to 3 in `Start()`. `PlayerController` reads `damageAmount` from the colliding vehicle and passes it to `GameManager.TakeDamage(int amount)`.
 
@@ -78,6 +79,8 @@ Assets/Scripts/
 **SpawnManager** has a `spawnTraffic` bool toggle (Inspector checkbox, default true) to disable traffic spawning during testing.
 
 **MoveDown.cs** is a reusable component attached to traffic vehicles, powerups, and crates to push them toward the camera (negative Z) and clean them up when they pass `zDestroy`.
+
+**BackgroundMusic**: attached to the music AudioSource. Each `Update` maps `gameManager.score` to a pitch between `minPitch` (1.0) and `maxPitch` (1.5). Pitch stays at `minPitch` until score reaches `minScore` (500), then ramps linearly up to `maxPitch` at `maxScore` (1000). `GameManager.score` is a public property with a private setter.
 
 **Scoring** comes from two sources: `SpawnManager` calls `gameManager.UpdateScore(5)` each time traffic spawns (every `trafficSpawnTime/2` seconds, default 0.5s); and `Vehicle.Explode()` calls `gameManager.UpdateScore(pointValue)` when the player collides with a vehicle. Point values: Car = 10 (base default), Truck = 20, Bus = 30.
 
