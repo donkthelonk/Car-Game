@@ -12,16 +12,6 @@ class Truck : Vehicle
         pointValue = 20;
     }
 
-private void OnCollisionEnter(Collision collision)
-    {
-        // when Vehicle collides with the player object
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Honk();
-            Explode();
-        }
-    }
-
     protected override void Honk()
     {
         Debug.Log("Truck Honk() called!");

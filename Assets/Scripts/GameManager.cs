@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int maxHealth = 3;
 
-    private int score;
+    public int score { get; private set; }
     private int health;
     private int scoreMultiplier = 1;
     private float scoreValueFontSize;

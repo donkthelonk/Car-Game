@@ -53,6 +53,7 @@ void Awake()
         }
 
         gameManager.UpdateScore(pointValue);
+        gameManager.AddTime(1f);
         Destroy(gameObject);
     }
 

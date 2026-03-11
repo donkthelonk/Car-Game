@@ -30,14 +30,4 @@ private void Start()
         Debug.Log("Car Honk() called!");
         AudioSource.PlayClipAtPoint(honkClip, transform.position);
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        // when Vehicle collides with the player object
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Honk();
-            Explode();
-        }
-    }
 }
