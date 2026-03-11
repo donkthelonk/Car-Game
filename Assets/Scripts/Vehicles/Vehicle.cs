@@ -5,10 +5,8 @@ using UnityEngine;
 // INHERITANCE base class
 abstract class Vehicle : MonoBehaviour
 {
-    protected AudioSource vehicleAudio;
     protected GameManager gameManager;
 
-    public AudioClip honkClip;
     public AudioClip explosionClip;
     public GameObject explosionPrefab;
     public GameObject floatingTextPrefab;
@@ -20,12 +18,6 @@ void Awake()
         gameManager = FindObjectOfType<GameManager>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        vehicleAudio = GetComponent<AudioSource>();
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -58,15 +50,5 @@ void Awake()
         gameManager.AddTime(1f);
         Destroy(gameObject);
     }
-
-    // POLYMORPHISM virtual function
-    protected virtual void Honk()
-    {
-        Debug.Log("Vehicle Honk() called!");
-
-        // play the audio clip once at 50% volume
-        vehicleAudio.PlayOneShot(honkClip, 0.5f);
-    }
-
 
 }

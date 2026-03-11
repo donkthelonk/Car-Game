@@ -19,15 +19,4 @@ class Car : Vehicle
         return number;
     }
 
-private void Start()
-    {
-        vehicleAudio = GetComponent<AudioSource>();
-    }
-
-    // POLYMORPHISM function override
-    protected override void Honk()
-    {
-        Debug.Log("Car Honk() called!");
-        AudioSource.PlayClipAtPoint(honkClip, transform.position);
-    }
 }
