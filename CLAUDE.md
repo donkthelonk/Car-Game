@@ -59,7 +59,7 @@ Assets/Scripts/
 
 **Damage deduplication**: `PlayerController` uses an `isInvincible` flag with a 0.5s `Invoke` cooldown to prevent multiple colliders on the player (e.g. wheels) from triggering `TakeDamage()` more than once per hit.
 
-**Powerup types**: defined by the `PowerupType` enum (`Health`, `Invincibility`, `ScoreMultiplier`). Set on each prefab via the `type` field on the `Powerup` component — color is applied automatically at runtime (green/blue/red). `SpawnManager` and `Crate` both hold `GameObject[]` arrays and pick randomly. Effects on pickup: Health restores 1 HP + 5s; Invincibility sets `isInvincible` for 3s and blinks the player; ScoreMultiplier doubles score for 10s. `GameManager.ShowPowerupText()` displays a `PowerupText` flash on every pickup.
+**Powerup types**: defined by the `PowerupType` enum (`Health`, `Invincibility`, `ScoreMultiplier`). Set on each prefab via the `type` field on the `Powerup` component — color is applied automatically at runtime (green/blue/red). `SpawnManager` and `Crate` both hold `GameObject[]` arrays and pick randomly. Effects on pickup: Health restores 1 HP + 5s; Invincibility sets `isInvincible` for 3s and blinks the player; ScoreMultiplier doubles score for 10s. `GameManager.ShowPowerupText()` displays a `PowerupText` flash on every pickup. Each prefab has a `pickupSound` AudioClip field — played via `AudioSource.PlayClipAtPoint()` before the GameObject is destroyed.
 
 **Crate**: on player collision, instantiates the explosion prefab and destroys itself. Has a `powerupDropChance` (0–1, default 0.5) — rolls against `powerupPrefabs[]` array, picks a random prefab if successful. Logs `"Crate dropped a powerup!"` to the console when this occurs.
 
